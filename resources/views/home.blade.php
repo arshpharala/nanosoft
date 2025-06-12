@@ -120,77 +120,19 @@
             <p class="how">How we do</p>
             <h2>Solutions</h2>
             <div class="row">
+                @foreach (services() as $service)
                 <div class="col-12 col-md-4">
                     <div class="solution-box">
                         <a href="" class="solution-content">
                             <img src="{{ asset('/assets/img/managed-services.png') }}" alt="service">
-                            <h3>Managed Services</h3>
-                            <p>Free up your internal resources to focus on the business by letting us handle day to day
-                                support services, management, and monitoring of your IT.</p>
+                            <h3>{{ $service->title }}</h3>
+                            <p>{!! $service->description !!}</p>
                         </a>
-                        <a href="" class="learn"><span>Learn More</span></a>
+                        <a href="{{ route('service.detail', ['service' => $service->url->url ?? '']) }}" class="learn"><span>Learn More</span></a>
                     </div>
                 </div>
-                <div class="col-12 col-md-4">
-                    <div class="solution-box">
-                        <a href="" class="solution-content">
-                            <img src="{{ asset('/assets/img/managed-services.png') }}" alt="service">
-                            <h3>Managed Services</h3>
-                            <p>Free up your internal resources to focus on the business by letting us handle day to day
-                                support services, management, and monitoring of your IT.</p>
-                        </a>
-                        <a href="" class="learn"><span>Learn More</span></a>
+                @endforeach
 
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="solution-box">
-                        <a href="" class="solution-content">
-                            <img src="{{ asset('/assets/img/managed-services.png') }}" alt="service">
-                            <h3>Managed Services</h3>
-                            <p>Free up your internal resources to focus on the business by letting us handle day to day
-                                support services, management, and monitoring of your IT.</p>
-                        </a>
-                        <a href="" class="learn"><span>Learn More</span></a>
-
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="solution-box">
-                        <a href="" class="solution-content">
-                            <img src="{{ asset('/assets/img/managed-services.png') }}" alt="service">
-                            <h3>Managed Services</h3>
-                            <p>Free up your internal resources to focus on the business by letting us handle day to day
-                                support services, management, and monitoring of your IT.</p>
-                        </a>
-                        <a href="" class="learn"><span>Learn More</span></a>
-
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="solution-box">
-                        <a href="" class="solution-content">
-                            <img src="{{ asset('/assets/img/managed-services.png') }}" alt="service">
-                            <h3>Managed Services</h3>
-                            <p>Free up your internal resources to focus on the business by letting us handle day to day
-                                support services, management, and monitoring of your IT.</p>
-                        </a>
-                        <a href="" class="learn"><span>Learn More</span></a>
-
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="solution-box">
-                        <a href="" class="solution-content">
-                            <img src="{{ asset('/assets/img/managed-services.png') }}" alt="service">
-                            <h3>Managed Services</h3>
-                            <p>Free up your internal resources to focus on the business by letting us handle day to day
-                                support services, management, and monitoring of your IT.</p>
-                        </a>
-                        <a href="" class="learn"><span>Learn More</span></a>
-
-                    </div>
-                </div>
             </div>
             <a href="#" class="button primary-btn mx-auto mt-4" style="width: fit-content;">View All Solutions</a>
         </div>
