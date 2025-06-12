@@ -123,7 +123,7 @@
                 @foreach (services() as $service)
                 <div class="col-12 col-md-4">
                     <div class="solution-box">
-                        <a href="" class="solution-content">
+                        <a href="{{ route('service.detail', ['service' => $service->url->url ?? '']) }}" class="solution-content">
                             <img src="{{ asset('/assets/img/managed-services.png') }}" alt="service">
                             <h3>{{ $service->title }}</h3>
                             <p>{!! $service->description !!}</p>
