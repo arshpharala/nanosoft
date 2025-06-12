@@ -1,0 +1,234 @@
+.services-banner {
+    background-color: #110D95;
+    background-image: url(../img/service-banner.png);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: #fff;
+    padding-block: 40px;
+}
+
+.services-banner p {
+    color: #fff;
+}
+
+.services-banner .sub-heading {
+    background: #00000026;
+    color: #DEE0FF;
+}
+
+.benefits,
+.managed,
+.performance, .partner {
+    padding-block: 40px;
+}
+
+.benefits img {
+    border-radius: 4px;
+}
+
+.benefits p,
+.managed p {
+    color: #787878;
+    font-size: 14px;
+}
+
+.benefits ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #787878;
+}
+
+.benefits ul.benefits-list {
+    padding-left: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+
+.benefits ul.benefits-list li h3 {
+    color: #000;
+    font-size: 16px;
+}
+
+.benefits ul.benefits-list li h3 i {
+    color: #010ED0;
+    font-size: 24px;
+}
+
+.benefits ul.benefits-list li p {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.performance ul li {
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #00000026;
+}
+
+.performance ul li:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.performance ul li h3 {
+    font-family: 'Inter Tight Bold';
+    font-size: 18px;
+    position: relative;
+    padding-left: 22px;
+}
+
+.performance ul li h3::before {
+    content: '';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 6px;
+    left: 0;
+    height: 10px;
+    width: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0px 0px 1px 7px #010ED0;
+}
+
+.performance ul li p {
+    color: #878787;
+    font-size: 14px;
+    margin-bottom: 0;
+    padding-left: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+    .benefits ul.benefits-list li h3 {
+        font-size: 18px;
+    }
+
+    .benefits ul.benefits-list li p {
+        padding-left: 33px;
+    }
+
+    .benefits ul.benefits-list {
+        gap: 15px;
+    }
+
+    .benefits h2,
+    .managed h2 {
+        font-size: 22px;
+    }
+
+    .performance {
+        position: relative;
+    }
+
+    .performance .col-12:nth-child(1) {
+        position: sticky;
+        top: 46px;
+        left: 0;
+    }
+
+    .performance .performance-header .performance-text {
+        margin-top: 10rem !important;
+    }
+
+    .performance .performance-header img {
+        position: absolute;
+        top: -52px;
+        right: -75px;
+        max-width: 180px;
+        transition: transform 0.2s ease-out;
+        position: absolute;
+        transform: translate(0);
+        z-index: 1;
+    }
+
+    .performance ul {
+        margin-top: 65%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+
+    .services-banner,
+    .benefits,
+    .managed, .partner {
+        padding-block: 80px;
+    }
+
+    .benefits h2,
+    .managed h2 {
+        font-size: 28px;
+    }
+
+    .managed p {
+        font-size: 16px;
+    }
+
+    .performance .performance-header img {
+        top: 58px;
+    }
+
+    .performance .performance-header .performance-text {
+        margin-top: 5rem !important;
+    }
+
+    .performance .performance-header img {
+        top: -15px;
+    }
+
+    .performance ul {
+        padding-left: 18%;
+    }
+
+    .services-banner p {
+        font-size: 22px;
+        margin-block: 20px;
+    }
+
+}
+
+@media only screen and (min-width: 1200px) {
+    .benefits ul.benefits-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px 0px;
+    }
+
+    .benefits ul.benefits-list li {
+        width: 48%;
+    }
+
+    .services-banner p {
+        font-size: 26px;
+    }
+
+}
+
+@media only screen and (max-width: 1023px) {
+
+    .benefits h2,
+    .managed h2 {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .benefits .col-12:nth-child(1) {
+        order: 2;
+    }
+
+    .benefits img {
+        max-height: 40vh;
+    }
+
+    .performance .performance-header .performance-text {
+        order: 2;
+    }
+}

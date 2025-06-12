@@ -1,0 +1,142 @@
+@import './font.css';
+
+.contact-banner {
+    text-align: center;
+    padding-block: 40px;
+}
+
+.contact-banner h6.sub-heading {
+    margin-inline: auto;
+}
+
+.contact-banner .contact-info {
+    gap: 10px;
+}
+
+.contact-banner .contact-info p,
+.contact-banner .contact-info a {
+    font-family: "Inter Tight Medium", Sans-serif;
+    color: #242627;
+    font-size: 14px;
+    text-align: left;
+}
+
+.contact-banner .contact-info svg {
+    fill: #00000026;
+}
+
+.contact-banner .contact-img img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.locations {
+    padding-bottom: 40px;
+}
+
+.locations .scroll-dots-img {
+    top: 17%;
+    right: 0;
+    width: 22%;
+    height: auto;
+    transform: translateY(-50%) rotate(-90deg);
+    z-index: 0;
+    transition: transform 0.1s ease-out;
+    pointer-events: none;
+}
+
+.locations .locations-list {
+    margin-top: 40px;
+}
+
+.locations .locations-list li {
+    border-bottom: 1px solid #00000026;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+}
+
+.locations .locations-list li:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.locations .locations-list li h3 {
+    color: #0A0D31;
+    font-family: 'Inter Tight Bold';
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.locations .locations-list li h5 {
+    color: #0A0D31;
+    font-family: 'Inter Tight Medium';
+    font-size: 20px;
+}
+
+.locations .locations-list li a {
+    color: #010ED0;
+    font-size: 12px;
+    font-family: 'Inter Tight Black';
+    border-bottom: 3px solid #DEE0FF;
+}
+
+.locations .locations-list li p a {
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    border-bottom: 0;
+}
+
+@media only screen and (min-width: 768px) {
+    .locations .locations-list li {
+        border-bottom: 0;
+        border-right: 1px solid #00000026;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        padding-inline: 25px;
+    }
+
+    .locations .locations-list li:first-child {
+        padding-left: 0;
+    }
+
+    .locations .locations-list li:last-child {
+        border-right: 0;
+        padding-right: 0;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .contact-banner {
+        padding-block: 80px;
+    }
+
+    .locations {
+        padding-bottom: 80px;
+    }
+
+    .locations .locations-list li {
+        padding-inline: 60px;
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+    .locations .scroll-dots-img {
+        width: 0;
+    }
+
+    .locations .locations-list li h3 {
+        font-size: 22px;
+    }
+
+    .locations .locations-list li h5 {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .locations .scroll-dots-img {
+        width: 0;
+    }
+}

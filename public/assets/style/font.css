@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'Inter Tight ExtraBold';
+    src: url('../font/InterTight-ExtraBold.woff2') format('woff2'),
+        url('../font/InterTight-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter Tight BoldItalic';
+    src: url('../font/InterTight-BoldItalic.woff2') format('woff2'),
+        url('../font/InterTight-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter Tight Medium';
+    src: url('../font/InterTight-Medium.woff2') format('woff2'),
+        url('../font/InterTight-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter Tight Regular';
+    src: url('../font/InterTight-Regular.woff2') format('woff2'),
+        url('../font/InterTight-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter Tight Black';
+    src: url('../font/InterTight-Black.woff2') format('woff2'),
+        url('../font/InterTight-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter Tight Bold';
+    src: url('../font/InterTight-Bold.woff2') format('woff2'),
+        url('../font/InterTight-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter Tight BlackItalic';
+    src:url('../font/InterTight-BlackItalic.woff2') format('woff2'),
+        url('../font/InterTight-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
