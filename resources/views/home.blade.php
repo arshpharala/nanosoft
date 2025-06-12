@@ -441,22 +441,7 @@
                 </div>
 
                 @endforeach
-                <div class="item">
-                    <img src="{{ asset('/assets/img/insurance.webp') }}" alt="review-img" class="reviews-logo">
-                    <h3>Tecnologia implemented such a powerful platform that we had no break in service when our
-                        employees had to work from home due to the COVID-19 pandemic. We weren’t concerned about how to
-                        shift to a remote working environment because Integris facilitated a seamless transition.</h3>
-                    <h5>Amanda Parks</h5>
-                    <p>Network Manager, Healthcare Organization</p>
-                </div>
-                <div class="item">
-                    <img src="{{ asset('/assets/img/insurance.webp') }}" alt="review-img" class="reviews-logo">
-                    <h3>Tecnologia implemented such a powerful platform that we had no break in service when our
-                        employees had to work from home due to the COVID-19 pandemic. We weren’t concerned about how to
-                        shift to a remote working environment because Integris facilitated a seamless transition.</h3>
-                    <h5>Amanda Parks</h5>
-                    <p>Network Manager, Healthcare Organization</p>
-                </div>
+
             </div>
             <div class="ratings d-flex align-items-center ms-auto" style="gap: 35px; width: fit-content;">
                 <div class="rating-box">
