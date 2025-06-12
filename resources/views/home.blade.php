@@ -427,14 +427,20 @@
     <section class="reviews">
         <div class="container">
             <div class="owl-carousel review-carousel">
+                @foreach ($testimonials as $testimonial)
                 <div class="item">
+                    @if ($testimonial->company_icon)
+                    <img src="{{ asset('/storage/'.$testimonial->company_icon) }}" alt="review-img" class="reviews-logo">
+                    @else
                     <img src="{{ asset('/assets/img/insurance.webp') }}" alt="review-img" class="reviews-logo">
-                    <h3>Tecnologia implemented such a powerful platform that we had no break in service when our
-                        employees had to work from home due to the COVID-19 pandemic. We weren’t concerned about how to
-                        shift to a remote working environment because Integris facilitated a seamless transition.</h3>
-                    <h5>Amanda Parks</h5>
-                    <p>Network Manager, Healthcare Organization</p>
+
+                    @endif
+                    <h3>{{ $testimonial->testimonial }}</h3>
+                    <h5>{{ $testimonial->name}}</h5>
+                    <p>{{ $testimonial->designation }}</p>
                 </div>
+
+                @endforeach
                 <div class="item">
                     <img src="{{ asset('/assets/img/insurance.webp') }}" alt="review-img" class="reviews-logo">
                     <h3>Tecnologia implemented such a powerful platform that we had no break in service when our

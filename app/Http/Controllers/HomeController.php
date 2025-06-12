@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Testimonial;
 use App\Models\Url;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function home(){
-        return view('home');
+
+        $testimonials = Testimonial::get();
+
+        $data['testimonials'] = $testimonials;
+
+        return view('home', $data);
     }
 
     function service(){
