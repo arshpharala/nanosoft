@@ -6,7 +6,7 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/services', [HomeController::class, 'service'])->name('service');
-Route::get('/services/{service}', [HomeController::class, 'service'])->name('service.detail');
+Route::get('/services/{service}', [HomeController::class, 'serviceDetail'])->name('service.detail');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('about-us', [HomeController::class, 'about'])->name('about');
 Route::get('/terms-and-conditions', [HomeController::class, 'terms'])->name('terms');

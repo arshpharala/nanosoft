@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Url;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,7 +12,19 @@ class HomeController extends Controller
     }
 
     function service(){
+        return view('service-detail');
+    }
 
+    function serviceDetail($slug){
+
+
+        $service = \App\Models\Service::whereHas('url', function($url) use($slug){
+            $url->where('url',$slug);
+        })->firstOrFail();
+
+        $data['service'] = $service;
+
+        return view('service-detail', $data);
     }
 
     function contact(){

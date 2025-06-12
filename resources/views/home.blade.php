@@ -111,7 +111,7 @@
                     </div>
                 </div>
             </div>
-            <a href="{{ asset('/assets/pages/about.html') }}">About technologia</a>
+            
         </div>
     </section>
 

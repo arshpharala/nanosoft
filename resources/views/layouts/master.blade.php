@@ -256,17 +256,7 @@
                                 <li><a href="">FAQ</a></li>
                             </ul>
                         </div>
-                        <div class="footer-input">
-                            <input type="text" placeholder="Don't miss out updates">
-                            <div class="input-container">
-                                <input type="checkbox" id="privacy_policy">
-                                <label for="privacy_policy">I agree to the Privacy Policy and give my permission to
-                                    process my personal data for the purposes specified in the Privacy Policy.</label>
-
-                            </div>
-                            <button type="submit" class="button primary-btn">Send <i
-                                    class="fa-solid fa-arrow-right"></i></button>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
