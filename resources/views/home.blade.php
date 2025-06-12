@@ -11,7 +11,7 @@
                                 and services that will meet your needs. Browse our selection today and find what you're
                                 looking for.</p>
                             <div class="buttons d-flex align-items-center">
-                                <a href="#" class="button primary-btn">Schedule a Free Consultation</a>
+                                <a href="{{ route('contact') }}" class="button primary-btn">Schedule a Free Consultation</a>
                                 <a href="#" class="button secondary-btn">Services</a>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </section>
 
