@@ -18,16 +18,15 @@
     align-items: center;
     text-align: center;
     border: 0;
-}
-
-.button.primary-btn {
-    background-color: #010ED0;
     color: #fff;
 }
 
+.button.primary-btn {
+    background: linear-gradient(90deg, #076fb6 50%, #27a9de 80%);
+}
+
 .button.secondary-btn {
-    background-color: #DEE0FF;
-    color: #010ED0;
+    background: linear-gradient(90deg, #3ab54a 50%, #95be53 80%);
 }
 
 a {

@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    protected $fillable = ['title', 'image', 'is_active', 'description'];
+    protected $fillable = ['title', 'image', 'is_active', 'slug', 'short_description', 'description', 'category_id'];
 
-    public function url()
+    public function category()
     {
-        return $this->morphOne(Url::class, 'urlable');
+        return $this->belongsTo(Category::class);
     }
 
     public function meta()

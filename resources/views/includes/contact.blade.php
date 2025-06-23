@@ -43,34 +43,35 @@
                         </div>
                     </div>
                 </div>
-                <form action="">
+                <form action="{{ route('enquiry') }}" method="post" class="ajax-form">
+                    @csrf
                     <h3>Schedule a Free Consultation</h3>
                     <div class="fields">
                         <div class="inputs">
                             <div class="input-container">
                                 <label for="">First Name</label>
-                                <input type="text">
+                                <input type="text" name="first_name">
                             </div>
                             <div class="input-container">
                                 <label for="">Last Name</label>
-                                <input type="text">
+                                <input type="text" name="last_name">
                             </div>
                         </div>
                         <div class="input-container">
                             <label for="">Company / Organization</label>
-                            <input type="text">
+                            <input type="text" name="company">
                         </div>
                         <div class="input-container">
                             <label for="">Company Email</label>
-                            <input type="email">
+                            <input type="email" name="email">
                         </div>
                         <div class="input-container">
                             <label for="">Phone</label>
-                            <input type="number">
+                            <input type="number" name="phone">
                         </div>
                         <div class="input-container">
                             <label for="">How can we help you?</label>
-                            <select>
+                            <select name="service_id">
                                 <option value="">Select Option</option>
                                 @foreach ($services as $sr)
                                     <option value="{{ $sr->id }}">{{ $sr->title }}</option>
@@ -79,9 +80,9 @@
                         </div>
                         <div class="input-container">
                             <label for="">Message</label>
-                            <textarea placeholder="To better assist you, please describe how we can help..."></textarea>
+                            <textarea name="message" placeholder="To better assist you, please describe how we can help..."></textarea>
                         </div>
-                        
+
                         <button type="submit" class="button primary-btn">Submit</button>
                     </div>
                 </form>

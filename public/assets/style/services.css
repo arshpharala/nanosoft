@@ -54,7 +54,7 @@
 }
 
 .benefits ul.benefits-list li h3 i {
-    color: #010ED0;
+    color: #076fb6;
     font-size: 24px;
 }
 
@@ -95,7 +95,7 @@
     width: 10px;
     background-color: #fff;
     border-radius: 50%;
-    box-shadow: 0px 0px 1px 7px #010ED0;
+    box-shadow: 0px 0px 1px 7px #076fb6;
 }
 
 .performance ul li p {
@@ -206,7 +206,7 @@
     }
 
     .services-banner p {
-        font-size: 26px;
+        font-size: 26   px;
     }
 
 }

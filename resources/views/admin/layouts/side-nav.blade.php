@@ -5,6 +5,21 @@
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="material-icons-outlined">shopping_bag</i>
             </div>
+            <div class="menu-title">Categories</div>
+        </a>
+        <ul>
+            <li><a href="{{ route('admin.categories.create') }}"><i class="material-icons-outlined">arrow_right</i>Add
+                    Category</a>
+            </li>
+            <li><a href="{{ route('admin.categories.index') }}"><i
+                        class="material-icons-outlined">arrow_right</i>Categories</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="material-icons-outlined">dns</i>
+            </div>
             <div class="menu-title">Services</div>
         </a>
         <ul>
@@ -13,6 +28,21 @@
             </li>
             <li><a href="{{ route('admin.services.index') }}"><i
                         class="material-icons-outlined">arrow_right</i>Services</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="material-icons-outlined">business</i>
+            </div>
+            <div class="menu-title">Industries</div>
+        </a>
+        <ul>
+            <li><a href="{{ route('admin.industries.create') }}"><i class="material-icons-outlined">arrow_right</i>Add
+                    Industry</a>
+            </li>
+            <li><a href="{{ route('admin.industries.index') }}"><i
+                        class="material-icons-outlined">arrow_right</i>Industries</a>
             </li>
         </ul>
     </li>
@@ -34,7 +64,7 @@
     </li>
     <li>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="material-icons-outlined">shopping_bag</i>
+            <div class="parent-icon"><i class="material-icons-outlined">map</i>
             </div>
             <div class="menu-title">Locations</div>
         </a>
@@ -49,7 +79,7 @@
     </li>
     <li>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="material-icons-outlined">shopping_bag</i>
+            <div class="parent-icon"><i class="material-icons-outlined">feedback</i>
             </div>
             <div class="menu-title">Testimonials</div>
         </a>
@@ -62,7 +92,7 @@
             </li>
         </ul>
     </li>
-    <li>
+    {{-- <li>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="material-icons-outlined">shopping_bag</i>
             </div>
@@ -76,8 +106,15 @@
                         class="material-icons-outlined">arrow_right</i>Pages</a>
             </li>
         </ul>
-    </li>
+    </li> --}}
 
+    <li>
+        <a href="{{ route('admin.enquiries.index') }}">
+            <div class="parent-icon"><i class="material-icons-outlined">email</i>
+            </div>
+            <div class="menu-title">Enquiries</div>
+        </a>
+    </li>
     <li>
         <a href="{{ route('admin.settings.index') }}">
             <div class="parent-icon"><i class="material-icons-outlined">support</i>

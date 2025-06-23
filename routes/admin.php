@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\EnquiryController;
+use App\Http\Controllers\Admin\IndustryController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\OnlineStoreController;
 use App\Http\Controllers\Admin\PageController;
@@ -30,12 +33,15 @@ Route::get('dashboard', [ServiceController::class, 'index'])->middleware(['auth'
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], function () {
 
+    Route::resource('categories', CategoryController::class);
     Route::resource('services', ServiceController::class);
     Route::resource('settings', SettingController::class);
     Route::resource('locations', LocationController::class);
     Route::resource('testimonials', TestimonialController::class);
-    Route::resource('pages', PageController::class);
     Route::resource('online-stores', OnlineStoreController::class);
+    Route::resource('industries', IndustryController::class);
+    Route::resource('enquiries', EnquiryController::class);
+    Route::resource('pages', PageController::class);
 
 
 

@@ -6,8 +6,9 @@
                 <div class="row">
                     <div class="col-12 col-md-6">
                         <div class="banner-content">
-                            <h1 class="title">Welcome to Nanosoft Corporation Limited</h1>
-                            <p>Discover the latest in computers and technology with us. We offer a wide range of products
+                            <h1 class="title fs-1">Welcome to Nanosoft Corporation Limited</h1>
+                            <p class="fs-3">Discover the latest in computers and technology with us. We offer a wide range
+                                of products
                                 and services that will meet your needs. Browse our selection today and find what you're
                                 looking for.</p>
                             <div class="buttons d-flex align-items-center">
@@ -28,45 +29,6 @@
     <div class="divider">
         <span></span>
     </div>
-
-    <section class="review">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="reviewed d-flex align-items-center mb-2">
-                        <p>Reviewed On</p>
-                        <ul>
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                        </ul>
-                    </div>
-                    <div class="review-img d-flex align-items-center">
-                        <img src="{{ asset('/assets/img/clutch-logo.svg') }}" alt="clutch">
-                        <p>31 Reviews</p>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <h3>20 <span>Years</span></h3>
-                    <p>Proven Track Record</p>
-                </div>
-                <div class="col-6 col-md-3">
-                    <h3>98 <span>%</span></h3>
-                    <p>Customer Satisfaction</p>
-                </div>
-                <div class="col-6 col-md-3">
-                    <h3>1,500 <span>Projects</span></h3>
-                    <p>We Have Completed</p>
-                </div>
-                <div class="col-6 col-md-3">
-                    <h3>3 <span>Mins</span></h3>
-                    <p>Average Answer Time</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section class="simplyfying">
         <div class="container">
@@ -111,7 +73,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -120,21 +81,23 @@
             <p class="how">How we do</p>
             <h2>Solutions</h2>
             <div class="row">
-                @foreach (services() as $service)
-                <div class="col-12 col-md-4">
-                    <div class="solution-box">
-                        <a href="{{ route('service.detail', ['service' => $service->url->url ?? '']) }}" class="solution-content">
-                            <img src="{{ asset('/assets/img/managed-services.png') }}" alt="service">
-                            <h3>{{ $service->title }}</h3>
-                            <p>{!! $service->description !!}</p>
-                        </a>
-                        <a href="{{ route('service.detail', ['service' => $service->url->url ?? '']) }}" class="learn"><span>Learn More</span></a>
+                @foreach (services()->take(6) as $service)
+                    <div class="col-12 col-md-4">
+                        <div class="solution-box">
+                            <a href="{{ route('service.detail', ['category' => $service->category->slug, 'service' => $service->slug]) }}"
+                                class="solution-content">
+                                <img src="{{ asset('/assets/img/managed-services.png') }}" alt="service">
+                                <h3>{{ $service->title }}</h3>
+                                <p>{!! $service->short_description !!}</p>
+                            </a>
+                            <a href="{{ route('service.detail', ['category' => $service->category->slug, 'service' => $service->slug]) }}"
+                                class="learn"><span>Learn More</span></a>
+                        </div>
                     </div>
-                </div>
                 @endforeach
 
             </div>
-            <a href="#" class="button primary-btn mx-auto mt-4" style="width: fit-content;">View All Solutions</a>
+            <a href="" class="button primary-btn mx-auto mt-4" style="width: fit-content;">View All Solutions</a>
         </div>
     </section>
 
@@ -145,38 +108,20 @@
                     <small class="how mb-2 d-flex">How we do</small>
                     <h2 class="fs-1 fw-bold mb-5">Solving IT challenges in every industry, every day.</h2>
                     <ul class="d-flex flex-wrap" style="row-gap: 20px;">
-                        <li class="d-flex align-items-center rounded-pill pe-4" style="background-color: #f5f5f5;">
-                            <img src="assets/img/banner-img.png" width="55px" height="55px"
-                                class="rounded-circle object-cover" alt="">
-                            <p class="ms-2 mb-0">Industry & Manufacturing</p>
-                        </li>
-                        <li class="d-flex align-items-center rounded-pill pe-4" style="background-color: #f5f5f5;">
-                            <img src="assets/img/banner-img.png" width="55px" height="55px"
-                                class="rounded-circle object-cover" alt="">
-                            <p class="ms-2 mb-0">Transportation & Logistics</p>
-                        </li>
-                        <li class="d-flex align-items-center rounded-pill pe-4" style="background-color: #f5f5f5;">
-                            <img src="assets/img/banner-img.png" width="55px" height="55px"
-                                class="rounded-circle object-cover" alt="">
-                            <p class="ms-2 mb-0">Healthcare</p>
-                        </li>
-                        <li class="d-flex align-items-center rounded-pill pe-4" style="background-color: #f5f5f5;">
-                            <img src="assets/img/banner-img.png" width="55px" height="55px"
-                                class="rounded-circle object-cover" alt="">
-                            <p class="ms-2 mb-0">Banks & Insurance</p>
-                        </li>
-                        <li class="d-flex align-items-center rounded-pill pe-4" style="background-color: #f5f5f5;">
-                            <img src="assets/img/banner-img.png" width="55px" height="55px"
-                                class="rounded-circle object-cover" alt="">
-                            <p class="ms-2 mb-0">Consulting Providers</p>
-                        </li>
-                        <li class="d-flex align-items-center rounded-pill pe-4" style="background-color: #f5f5f5;">
-                            <img src="assets/img/banner-img.png" width="55px" height="55px"
-                                class="rounded-circle object-cover" alt="">
-                            <p class="ms-2 mb-0">Non-Profit</p>
-                        </li>
+                        @foreach ($industries as $industry)
+                            <li class="d-flex align-items-center rounded-pill pe-4" style="background-color: #95be53;">
+                                @if ($industry->image)
+                                    <img src="{{ asset('storage/' . $industry->image) }}" width="55px" height="55px"
+                                        class="rounded-circle object-cover" alt="{{ $industry->name }}">
+                                @else
+                                    <img src="assets/img/banner-img.png" width="55px" height="55px"
+                                        class="rounded-circle object-cover" alt="{{ $industry->name }}">
+                                @endif
+                                <p class="ms-2 mb-0">{{ $industry->name }}</p>
+                            </li>
+                        @endforeach
+
                     </ul>
-                    <a href="" class="mt-4 d-block link-underline-primary">View All Industries</a>
                 </div>
             </div>
         </div>
@@ -185,122 +130,72 @@
     <section class="best">
         <div class="container">
             <div class="best-container">
-                <h3 class="how">What we use</h3>
-                <h2>Bringing the best IT vendors to you.</h2>
-                <p>Working only with the best, to ensure the quality of our services, and to bring state of the art
-                    technology to those who need it.</p>
-                <h4>Your IT Challenges</h4>
+                <h3 class="how">What We Offer</h3>
+                <h2>Explore Our Expert IT Solutions</h2>
+                <p>
+                    Discover our wide range of specialized IT services—from cybersecurity and cloud infrastructure to secure
+                    asset disposal and managed IT operations.
+                    Each solution is tailored to address today’s business challenges with precision, innovation, and
+                    security at its core.
+                </p>
+                <h4>IT Challenges Met with Expertise</h4>
             </div>
-        </div>
 
-        <div class="best-boxes w-full row p-2 m-0 px-0">
-            <div class="col-3 ps-0">
-                <span></span>
+
+            <div class="best-boxes w-full row p-2 m-0 px-0">
+                <div class="col-3 ps-0">
+                    <span></span>
+                </div>
+                <div class="col-3">
+                    <span></span>
+                </div>
+                <div class="col-3">
+                    <span></span>
+                </div>
+                <div class="col-3 pe-0">
+                    <span></span>
+                </div>
             </div>
-            <div class="col-3">
-                <span></span>
-            </div>
-            <div class="col-3">
-                <span></span>
-            </div>
-            <div class="col-3 pe-0">
-                <span></span>
-            </div>
-        </div>
-        <div class="container">
-            <div class="owl-carousel best-carousel">
-                <div class="item">
-                    <h2>Datacenter & Hosting</h2>
-                    <p>Our facility – Data Center – is the first in the USA that meets the strict ANSI/TIA-942 rated 4
-                        certificate requirements for design, build and operate.</p>
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    <span class="toggle-icon me-2">+</span> View More
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <ul>
-                                        <li>Amazon Web Services (AWS)</li>
-                                        <li>Microsoft Azure</li>
-                                        <li>RackSpace</li>
-                                        <li>OVH</li>
-                                        <li>Digital Ocean</li>
-                                        <li>Bluehost</li>
-                                    </ul>
-                                    <p><img src="{{ asset('/assets/img/microsoft-azure-logo.png') }}" alt="azure"></p>
+            <div class="container">
+                <div class="owl-carousel best-carousel">
+                    @foreach (categoriesWithServices() as $category)
+                        <div class="item">
+                            <h2>{{ $category->name }}</h2>
+                            <p>{{ $category->short_description }}</p>
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+                                            aria-controls="collapseOne">
+                                            <span class="toggle-icon me-2">+</span> View More
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse"
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                @foreach ($category->services as $service)
+                                                    <li>{{ $service->title }}</li>
+                                                @endforeach
+                                                <p>
+                                                    @if ($category->icon)
+                                                        <img src="{{ asset('storage/' . $category->icon) }}"
+                                                            alt="{{ $category->name }}">
+                                                    @endif
+                                                </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <h2>Collaboration</h2>
-                    <p>Despite modern cloud technology, your users operate in a familiar Microsoft Office environment
-                        and benefit from broad compatibility and low-threshold access.</p>
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    <span class="toggle-icon me-2">+</span> View More
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <ul>
-                                        <li>Amazon Web Services (AWS)</li>
-                                        <li>Microsoft Azure</li>
-                                        <li>RackSpace</li>
-                                        <li>OVH</li>
-                                        <li>Digital Ocean</li>
-                                        <li>Bluehost</li>
-                                    </ul>
-                                    <p><img src="{{ asset('/assets/img/microsoft-azure-logo.png') }}" alt="azure"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <h2>Cloud Platform</h2>
-                    <p>Customized cloud platform designed to improve performance, lower IT costs, and provide secure and
-                        reliable access to your company data from any device, anytime, anywhere.</p>
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    <span class="toggle-icon me-2">+</span> View More
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <ul>
-                                        <li>Amazon Web Services (AWS)</li>
-                                        <li>Microsoft Azure</li>
-                                        <li>RackSpace</li>
-                                        <li>OVH</li>
-                                        <li>Digital Ocean</li>
-                                        <li>Bluehost</li>
-                                    </ul>
-                                    <p><img src="{{ asset('/assets/img/microsoft-azure-logo.png') }}" alt="azure"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
-        </div>
     </section>
 
-    <section class="blog">
+    {{-- <section class="blog">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -364,63 +259,26 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="reviews">
         <div class="container">
             <div class="owl-carousel review-carousel">
                 @foreach ($testimonials as $testimonial)
-                <div class="item">
-                    @if ($testimonial->company_icon)
-                    <img src="{{ asset('/storage/'.$testimonial->company_icon) }}" alt="review-img" class="reviews-logo">
-                    @else
-                    <img src="{{ asset('/assets/img/insurance.webp') }}" alt="review-img" class="reviews-logo">
-
-                    @endif
-                    <h3>{{ $testimonial->testimonial }}</h3>
-                    <h5>{{ $testimonial->name}}</h5>
-                    <p>{{ $testimonial->designation }}</p>
-                </div>
-
+                    <div class="item">
+                        @if ($testimonial->company_icon)
+                            <img src="{{ asset('/storage/' . $testimonial->company_icon) }}" alt="review-img"
+                                class="reviews-logo">
+                        @else
+                            <img src="{{ asset('/assets/img/insurance.webp') }}" alt="review-img" class="reviews-logo">
+                        @endif
+                        <h4>{{ $testimonial->testimonial }}</h4>
+                        <h5>{{ $testimonial->name }}</h5>
+                        <p>{{ $testimonial->designation }}</p>
+                    </div>
                 @endforeach
+            </div>
 
-            </div>
-            <div class="ratings d-flex align-items-center ms-auto" style="gap: 35px; width: fit-content;">
-                <div class="rating-box">
-                    <div class="reviewed d-flex align-items-center mb-2" style="gap: 5px;">
-                        <p class="mb-0">Reviewed On</p>
-                        <ul class="d-flex align-items-center">
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                            <li><i class="fa-solid fa-star"></i></li>
-                        </ul>
-                    </div>
-                    <div class="review-img d-flex align-items-center justify-content-between" style="gap: 5px;">
-                        <img src="{{ asset('/assets/img/clutch-logo.svg') }}" alt="clutch">
-                        <p class="mb-0">31 Reviews</p>
-                    </div>
-                </div>
-                <div class="rating-box d-flex align-items-center" style="gap: 8px;">
-                    <div class="reviewed d-flex align-items-center">
-                        <img src="{{ asset('/assets/img/google.svg') }}" alt="google">
-                    </div>
-                    <div class="review-img d-flex align-items-center flex-column" style="gap: 3px;">
-                        <div class="d-flex align-items-center justify-content-between w-full" style="gap: 5px;">
-                            <h6 class="review mb-0">4.9</h6>
-                            <ul class="d-flex align-items-center">
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star-half-stroke"></i></li>
-                            </ul>
-                        </div>
-                        <a class="mb-0" href="#">Customer Reviews</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 

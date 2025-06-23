@@ -13,10 +13,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::get();
+        $services = Service::with('category')->get();
+        $categories = \App\Models\Category::all();
 
-        $data['services'] = $services;
-        return view('admin.services.index', $data);
+        return view('admin.services.index', compact('services', 'categories'));
     }
 
     /**
@@ -24,7 +24,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('admin.services.create');
+        $categories = \App\Models\Category::all();
+        return view('admin.services.create', compact('categories'));
     }
 
     /**
@@ -35,13 +36,14 @@ class ServiceController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'url' => 'nullable|string|max:255',
+            'short_description' => 'nullable|string|max:255',
             'description' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'category_id' => 'nullable|exists:categories,id',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
             'meta_keywords' => 'nullable|string',
         ]);
-
         // Upload image
         $path = $request->file('image')->store('services', 'public');
 
@@ -49,13 +51,12 @@ class ServiceController extends Controller
         $service = Service::create([
             'title' => $request->title,
             'image' => $path,
+            'slug' => $request->url,
             'description' => $request->description,
             'is_active' => true,
+            'category_id' => $request->category_id,
         ]);
 
-        $service->url()->updateOrCreate([], [
-            'url' => $request->url,
-        ]);
 
         // Attach meta info
         $service->meta()->create([
@@ -89,9 +90,9 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
+        $categories = \App\Models\Category::all();
         $service = Service::with('meta')->findOrFail($id);
-
-        return view('admin.services.edit', compact('service'));
+        return view('admin.services.edit', compact('service', 'categories'));
     }
 
     /**
@@ -104,8 +105,10 @@ class ServiceController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'url' => 'nullable|string|max:255',
+            'short_description' => 'nullable|string|max:255',
             'description' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'category_id' => 'nullable|exists:categories,id',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
             'meta_keywords' => 'nullable|string',
@@ -118,13 +121,13 @@ class ServiceController extends Controller
 
         $service->update([
             'title' => $request->title,
+            'short_description' => $request->short_description,
             'description' => $request->description,
+            'slug' => $request->url,
             'is_active' => true,
+            'category_id' => $request->category_id,
         ]);
 
-        $service->url()->updateOrCreate([], [
-            'url' => $request->url,
-        ]);
 
         $service->meta()->updateOrCreate([], [
             'meta_title' => $request->meta_title,

@@ -3,100 +3,60 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Page;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $pages = Page::get();
+        $pages = Page::latest()->get();
+
         return view('admin.pages.index', compact('pages'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('admin.pages.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
+        $data = $request->validate([
+            'title' => 'required',
+            'slug' => 'required|unique:pages,slug',
+            'content' => 'nullable|string',
+            'is_active' => 'nullable|boolean',
         ]);
 
-        $page = Page::create([
-            'title' => $request->title,
-            'content' => $request->content,
-            'is_active' => true,
-        ]);
-
-        $page->url()->updateOrCreate([], [
-            'url' => Str::slug($request->title),
-        ]);
-
-        return response()->json(['success' => true, 'message' => 'Page created successfully.']);
+        $data['is_active'] = $request->has('is_active');
+        $data['content'] = $request->content ? $request->content : null;
+        Page::create($data);
+        return redirect()->route('admin.pages.index')->with('success', 'Page created successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(Page $page)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        $page = Page::findOrFail($id);
         return view('admin.pages.edit', compact('page'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Page $page)
     {
-        $page = Page::findOrFail($id);
-
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
+        $data = $request->validate([
+            'title' => 'required',
+            'slug' => 'required|unique:pages,slug,'.$page->id,
+            'content' => 'nullable|string',
+            'is_active' => 'nullable|boolean',
         ]);
-
-        $page->update([
-            'title' => $request->title,
-            'content' => $request->content,
-        ]);
-
-        $page->url()->updateOrCreate([], [
-            'url' => Str::slug($request->title),
-        ]);
-
-        return response()->json(['success' => true, 'message' => 'Page updated successfully.']);
+        $data['is_active'] = $request->has('is_active');
+        $data['content'] = $request->content ? $request->content : null;
+        $page->update($data);
+        return redirect()->route('admin.pages.index')->with('success', 'Page updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Page $page)
     {
-        $page = Page::findOrFail($id);
         $page->delete();
-        return response()->json(['success' => true, 'message' => 'Page deleted successfully.']);
+        return response()->json(['success' => true]);
     }
 }

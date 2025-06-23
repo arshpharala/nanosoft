@@ -23,20 +23,42 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mb-4">
+                                <h5 class="mb-3">Category</h5>
+                                <select name="category_id" class="form-control">
+                                    <option value="">Select Category</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}"
+                                            {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
                                 <h5 class="mb-3">Service Title</h5>
-                                <input type="text" class="form-control" name="title" placeholder="write title here....">
+                                <input type="text" class="form-control" name="title"
+                                    placeholder="write title here....">
                             </div>
                             <div class="mb-4">
                                 <h5 class="mb-3">Url</h5>
                                 <input type="text" class="form-control" name="url" placeholder="write url here....">
                             </div>
                             <div class="mb-4">
+                                <h5 class="mb-3">Short Description</h5>
+                                <textarea class="form-control rich-editor" name="short_description" cols="4" rows="6"
+                                    placeholder="Enter a short description"></textarea>
+                            </div>
+
+                            <div class="mb-4">
                                 <h5 class="mb-3">Description</h5>
-                                <textarea class="form-control rich-editor" name="description" cols="4" rows="6" placeholder="write a description here.."></textarea>
+                                <textarea class="form-control rich-editor" name="description" cols="4" rows="6"
+                                    placeholder="write a description here.."></textarea>
                             </div>
                             <div class="mb-4">
                                 <h5 class="mb-3">Image</h5>
-                                <input type="file" class="form-control" name="image" accept=".jpg, .png, image/jpeg, image/png">
+                                <input type="file" class="form-control" name="image"
+                                    accept=".jpg, .png, image/jpeg, image/png">
                             </div>
 
                         </div>
@@ -60,15 +82,18 @@
 
                                 <div class="col-12">
                                     <label for="meta-title" class="form-label">Meta Title</label>
-                                    <input type="text" class="form-control" name="meta_title" id="meta-title" placeholder="Meta Title">
+                                    <input type="text" class="form-control" name="meta_title" id="meta-title"
+                                        placeholder="Meta Title">
                                 </div>
                                 <div class="col-12">
                                     <label for="meta-description" class="form-label">Meta Description</label>
-                                    <textarea class="form-control" name="meta_description" cols="4" rows="6" placeholder="Write a description here.."></textarea>
+                                    <textarea class="form-control" name="meta_description" cols="4" rows="6"
+                                        placeholder="Write a description here.."></textarea>
                                 </div>
                                 <div class="col-12">
                                     <label for="keywords" class="form-label">Meta Keywords</label>
-                                    <input type="text" class="form-control" name="meta_keywords" id="keywords" placeholder="Keywords">
+                                    <input type="text" class="form-control" name="meta_keywords" id="keywords"
+                                        placeholder="Keywords">
                                 </div>
                             </div><!--end row-->
                         </div>

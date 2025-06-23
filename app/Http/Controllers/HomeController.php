@@ -2,50 +2,92 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Testimonial;
 use App\Models\Url;
+use App\Models\Page;
+use App\Models\Enquiry;
+use App\Models\Industry;
+use App\Models\Location;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function home(){
+    public function home()
+    {
 
         $testimonials = Testimonial::get();
 
+        $industries = Industry::get();
+
         $data['testimonials'] = $testimonials;
+        $data['industries'] = $industries;
 
         return view('home', $data);
     }
 
-    function service(){
+    function service()
+    {
         return view('service-detail');
     }
 
-    function serviceDetail($slug){
+    public function serviceDetail($categorySlug, $serviceSlug)
+    {
+        $service = \App\Models\Service::where('slug', $serviceSlug)
+            ->whereHas('category', function ($query) use ($categorySlug) {
+                $query->where('slug', $categorySlug);
+            })->firstOrFail();
 
-
-        $service = \App\Models\Service::whereHas('url', function($url) use($slug){
-            $url->where('url',$slug);
-        })->firstOrFail();
-
-        $data['service'] = $service;
-
-        return view('service-detail', $data);
+        return view('service-detail', compact('service'));
     }
 
-    function contact(){
-        return view('contact');
+    function contact()
+    {
+        $locations = Location::all();
+        $data['locations'] = $locations;
+        return view('contact', $data);
     }
 
-    function about(){
+    public function enquiry(Request $request)
+    {
+        $data = $request->validate([
+            'first_name'   => 'required|string|max:100',
+            'last_name'    => 'nullable|string|max:100',
+            'company'      => 'nullable|string|max:150',
+            'email'        => 'required|email|max:150',
+            'phone'        => 'nullable|string|max:20',
+            'service_id'   => 'nullable|exists:services,id',
+            'message'      => 'nullable|string|max:2000',
+        ]);
 
+        $data['ip'] = $request->ip();
+
+        $enquiry = Enquiry::create($data);
+
+        if ($request->ajax()) {
+            return response()->json(['success' => true, 'message' => 'Enquiry submitted successfully!']);
+        }
+
+        return back()->with('success', 'Enquiry submitted successfully!');
     }
 
-    function privacy(){
-
+    function page($slug)
+    {
+        $page = Page::where('slug', $slug)->where('is_active', true)->firstOrFail();
+        return view('pages.dynamic', compact('page'));
     }
 
-    function terms(){
+    function about()
+    {
+        return view('about-us');
+    }
 
+    function privacy()
+    {
+        return view('privacy');
+    }
+
+    function terms()
+    {
+        return view('terms');
     }
 }

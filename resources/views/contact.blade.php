@@ -39,38 +39,29 @@
 
             <div class="row">
                 <div class="col-12 col-md-6">
-                    <h2 class="title">Our locations</h2>
-                    <p class="text">We have offices throughout the East Coast, Midwest, and South — we’d love to show
-                        you around sometime. Don’t see an office in your area? We have the power to support your
-                        business, no matter the location.</p>
+                    <h2 class="title">Our location</h2>
+                    <p class="text">Based in Maldon, Essex, Nanosoft Corporation Limited has been serving clients across
+                        the UK since 2008.
+                        Site visits are available by appointment, and our team is always happy to assist you. Whether you're
+                        nearby or remote,
+                        we're equipped to support your IT needs wherever you are.</p>
                 </div>
             </div>
 
             <ul class="locations-list d-flex flex-wrap">
-                <li class="col-12 col-md-4">
-                    <h3>Florida</h3>
-                    <h5>Bonita Springs</h5>
-                    <p class="text">28200 Old 41 Rd #208 </br> Bonita Springs, FL 34135 </br> <a
-                            href="tel:(817) 575-6220">(817) 575-6220</a></p>
-                    <a href="">Get Directions</a>
-                </li>
-                <li class="col-12 col-md-4">
-                    <h3>Georgia</h3>
-                    <h5>Atlanta</h5>
-                    <p class="text">3565 Piedmont Rd NE</br> Building 2, Suite 200 </br> Atlanta GA 30222 </br> <a
-                            href="tel:(404) 551-52222">(404) 551-52222</a></p>
-                    <a href="">Get Directions</a>
-                </li>
-                <li class="col-12 col-md-4">
-                    <h3>Kansas</h3>
-                    <h5>Kansas City</h5>
-                    <p class="text">12421 W. 151st St., Suite 100</br> Olathe, KS 66000 </br> <a
-                            href="tel:(325) 221-9900">(325) 221-9900</a></p>
-                    <a href="">Get Directions</a>
-                </li>
+                @foreach ($locations as $location)
+                    <li class="col-12 col-md-4">
+                        <h3>{{ $location->name }}</h3>
+                        <h5>{{ $location->city }}</h5>
+                        <p class="text">{{ $location->address }}</p>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </section>
 
     @include('includes.contact', ['services' => services()])
+
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2470.7446670325385!2d0.679085876633896!3d51.73770537186658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8e13bb9fdbb55%3A0xf3680aeeea93ae4f!2sThe%20Causeway%2C%20Heybridge%2C%20Maldon%20CM9%204LJ%2C%20UK!5e0!3m2!1sen!2sae!4v1750709583356!5m2!1sen!2sae" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 @endsection

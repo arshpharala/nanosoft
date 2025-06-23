@@ -6,20 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
-    protected $fillable = ['title', 'content', 'is_active'];
+    protected $fillable = ['title', 'slug', 'content', 'is_active'];
 
-    public function url()
-    {
-        return $this->morphOne(Url::class, 'urlable');
-    }
-
-    public function meta()
-    {
-        return $this->morphOne(Meta::class, 'metable');
-    }
-
-    public function activityLogs()
-    {
-        return $this->morphMany(ActivityLog::class, 'loggable');
-    }
+    protected $casts = [
+        'content' => 'array',
+        'is_active' => 'boolean'
+    ];
 }
