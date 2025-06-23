@@ -209,14 +209,17 @@
                             </ul>
                         </div>
                         <div class="footer-input">
-                            <input type="text" placeholder="Don't miss out updates" />
-                            <div class="input-container">
-                                <input type="checkbox" id="privacy_policy" />
-                                <label for="privacy_policy">I agree to the Privacy Policy and give my permission to
-                                    process my personal data for the purposes specified in the Privacy Policy.</label>
-                            </div>
-                            <button type="submit" class="button primary-btn">Send <i
-                                    class="fa-solid fa-arrow-right"></i></button>
+                            <form action="{{ route('subscribe')}}" method="POST" class="ajax-form">
+                                @csrf
+                                <input type="email" name="email" placeholder="Don't miss out updates" />
+                                <div class="input-container">
+                                    <input type="checkbox" name="consent" id="privacy_policy" />
+                                    <label for="privacy_policy">I agree to the Privacy Policy and give my permission to
+                                        process my personal data for the purposes specified in the Privacy Policy.</label>
+                                    </div>
+                                    <button type="submit" class="button primary-btn">Send <i
+                                        class="fa-solid fa-arrow-right"></i></button>
+                                    </form>
                         </div>
                     </div>
                 </div>

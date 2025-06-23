@@ -7,6 +7,7 @@ use App\Models\Page;
 use App\Models\Enquiry;
 use App\Models\Industry;
 use App\Models\Location;
+use App\Models\Subscriber;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
@@ -45,6 +46,28 @@ class HomeController extends Controller
         $locations = Location::all();
         $data['locations'] = $locations;
         return view('contact', $data);
+    }
+
+    function subscribe(Request $request){
+
+        $request->validate([
+            'consent'    => 'required',
+            'email'        => 'required|email|max:150'
+        ]);
+
+        Subscriber::firstOrCreate([
+            'email' => $request->email
+        ],
+        [
+            'ip' => $request->ip()
+        ]);
+
+        if ($request->ajax()) {
+            return response()->json(['success' => true, 'message' => 'Subscribed successfully!']);
+        }
+
+        return back()->with('success', 'Subscribed successfully!');
+
     }
 
     public function enquiry(Request $request)

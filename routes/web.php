@@ -9,6 +9,7 @@ Route::get('/service/{category}/{service}', [HomeController::class, 'serviceDeta
 
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/enquiry', [HomeController::class, 'enquiry'])->name('enquiry');
+Route::post('/subscribe', [HomeController::class, 'subscribe'])->name('subscribe');
 Route::get('/about-us', [HomeController::class, 'about'])->name('about');
 Route::get('/terms-and-conditions', [HomeController::class, 'terms'])->name('terms');
 Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('privacy');
