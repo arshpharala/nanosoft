@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row align-items-lg-center">
                 <div class="col-12 col-md-6 col-lg-7">
-                    <h2 class="mb-lg-4">Benefits of {{ $service->title }} </br> provided by Nanosoft</h2>
+                    <h2 class="mb-lg-4">Introduction</h2>
                     {!! $service->description !!}
                 </div>
                 <div class="col-12 col-md-6 col-lg-5">
@@ -112,13 +112,13 @@
         </div>
     </section> --}}
 
-    {{-- <section class="performance">
+    <section class="performance">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6" style="height: fit-content;">
                     <div class="performance-header d-flex flex-column flex-md-row align-items-center position-relative">
                         <div class="performance-text mt-5 mt-md-0">
-                            <h2 class="title">Cutting-edge tools that drive performance</h2>
+                            <h2 class="title">Why Choose Us</h2>
                             <p>If your technology is draining resources rather than optimizing them, we can get you back
                                 on track. A professionally managed services provider can give you the decisive edge to:
                             </p>
@@ -129,61 +129,18 @@
 
                 <div class="col-12 col-md-6">
                     <ul>
+                        @foreach ($service->benefits as $benefit)
+
                         <li>
-                            <h3>Technical Implementation</h3>
-                            <p>We offer affordable IT solutions that help you reduce costs and improve your bottom line.
-                            </p>
+                            <h3>{{ $benefit->title }}</h3>
+                            <p>{!! $benefit->short_description !!}</p>
                         </li>
-                        <li>
-                            <h3>IT Helpdesk Support</h3>
-                            <p>We offer affordable IT solutions that help you reduce costs and improve your bottom line.
-                            </p>
-                        </li>
-                        <li>
-                            <h3>Technical Implementation</h3>
-                            <p>We offer affordable IT solutions that help you reduce costs and improve your bottom line.
-                            </p>
-                        </li>
-                        <li>
-                            <h3>IT Helpdesk Support</h3>
-                            <p>We offer affordable IT solutions that help you reduce costs and improve your bottom line.
-                            </p>
-                        </li>
-                        <li>
-                            <h3>Technical Implementation</h3>
-                            <p>We offer affordable IT solutions that help you reduce costs and improve your bottom line.
-                            </p>
-                        </li>
-                        <li>
-                            <h3>IT Helpdesk Support</h3>
-                            <p>We offer affordable IT solutions that help you reduce costs and improve your bottom line.
-                            </p>
-                        </li>
-                        <li>
-                            <h3>Technical Implementation</h3>
-                            <p>We offer affordable IT solutions that help you reduce costs and improve your bottom line.
-                            </p>
-                        </li>
-                        <li>
-                            <h3>IT Helpdesk Support</h3>
-                            <p>We offer affordable IT solutions that help you reduce costs and improve your bottom line.
-                            </p>
-                        </li>
-                        <li>
-                            <h3>Technical Implementation</h3>
-                            <p>We offer affordable IT solutions that help you reduce costs and improve your bottom line.
-                            </p>
-                        </li>
-                        <li>
-                            <h3>IT Helpdesk Support</h3>
-                            <p>We offer affordable IT solutions that help you reduce costs and improve your bottom line.
-                            </p>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
 
 
     @include('includes.contact', ['services' => services()])

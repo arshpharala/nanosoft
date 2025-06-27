@@ -18,6 +18,11 @@ class Service extends Model
         return $this->morphOne(Meta::class, 'metable');
     }
 
+    public function benefits()
+    {
+        return $this->hasMany(Benefit::class);
+    }
+
     public function activityLogs()
     {
         return $this->morphMany(ActivityLog::class, 'loggable');

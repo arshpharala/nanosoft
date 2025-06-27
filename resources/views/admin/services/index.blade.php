@@ -61,6 +61,7 @@
                                     <th>Service Name</th>
                                     <th>Status</th>
                                     <th>Date</th>
+                                    <th>Benefits</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -95,6 +96,9 @@
                                         </td>
                                         <td>
                                             {{ $service->created_at->format('M d, H:i A') }}
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('admin.service.benefits.index', $service->id) }}" class="btn btn-sm btn-outline-dark">Manage</a>
                                         </td>
                                         <td>
                                             <a href="{{ route('admin.services.edit', $service->id) }}"

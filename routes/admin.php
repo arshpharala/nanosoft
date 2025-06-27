@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\TinyMCEController;
+use App\Http\Controllers\BenefitController;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 
 
@@ -42,6 +43,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::resource('industries', IndustryController::class);
     Route::resource('enquiries', EnquiryController::class);
     Route::resource('pages', PageController::class);
+    Route::resource('service.benefits', BenefitController::class);
 
 
 

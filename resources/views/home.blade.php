@@ -6,14 +6,11 @@
                 <div class="row">
                     <div class="col-12 col-md-6">
                         <div class="banner-content">
-                            <h1 class="title fs-1">Welcome to Nanosoft Corporation Limited</h1>
-                            <p class="fs-3">Discover the latest in computers and technology with us. We offer a wide range
-                                of products
-                                and services that will meet your needs. Browse our selection today and find what you're
-                                looking for.</p>
+                            <h1 class="title fs-1">Secure IT Solutions for a Smarter World</h1>
+                            <p class="fs-3">Precision Security. Personalized Solutions</p>
                             <div class="buttons d-flex align-items-center">
-                                <a href="{{ route('contact') }}" class="button primary-btn">Schedule a Free Consultation</a>
-                                <a href="#" class="button secondary-btn">Services</a>
+                                <a href="{{ route('contact') }}" class="button primary-btn">Get in Touch </a>
+                                {{-- <a href="#" class="button secondary-btn">Services</a> --}}
                             </div>
                         </div>
                     </div>
