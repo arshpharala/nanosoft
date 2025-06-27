@@ -119,8 +119,7 @@
                     <div class="performance-header d-flex flex-column flex-md-row align-items-center position-relative">
                         <div class="performance-text mt-5 mt-md-0">
                             <h2 class="title">Why Choose Us</h2>
-                            <p>If your technology is draining resources rather than optimizing them, we can get you back
-                                on track. A professionally managed services provider can give you the decisive edge to:
+                            <p>{!! $service->why_choose !!}
                             </p>
                         </div>
                         <img id="scroll-performance-dots" src="{{asset('assets/img/shape-dots-black.svg') }}" alt="shape">

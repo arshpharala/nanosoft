@@ -83,7 +83,11 @@
                         <div class="solution-box">
                             <a href="{{ route('service.detail', ['category' => $service->category->slug, 'service' => $service->slug]) }}"
                                 class="solution-content">
-                                <img src="{{ asset('/assets/img/managed-services.png') }}" alt="service">
+                                @if (!empty($service->icon))
+                                    <img src="{{ asset('/storage/' . $service->icon) }}" alt="{{ $service->title }}">
+                                @else
+                                    <img src="{{ asset('/assets/img/managed-services.png') }}" alt="{{ $service->title }}">
+                                @endif
                                 <h3>{{ $service->title }}</h3>
                                 <p>{!! $service->short_description !!}</p>
                             </a>
@@ -162,8 +166,8 @@
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="false"
                                             aria-controls="collapseOne">
                                             <span class="toggle-icon me-2">+</span> View More
                                         </button>

@@ -56,11 +56,29 @@
                             </div>
 
                             <div class="mb-4">
-                                <h5 class="mb-3">Description</h5>
+                                <h5 class="mb-3">Intro</h5>
                                 <textarea class="form-control rich-editor" name="description" cols="4" rows="6"
-                                    placeholder="write a description here..">{{ old('description', $service->description) }}</textarea>
+                                    placeholder="write a intro here..">{{ old('description', $service->description) }}</textarea>
                             </div>
 
+                            <div class="mb-4">
+                                <h5 class="mb-3">Why Choose</h5>
+                                <textarea class="form-control rich-editor" name="why_choose" cols="4" rows="6"
+                                    placeholder="write a why choose here..">{{ old('why_choose', $service->why_choose) }}</textarea>
+                            </div>
+
+                            <div class="mb-4">
+                                <h5 class="mb-3">Icon</h5>
+                                <input type="file" class="form-control" name="icon" accept=".jpg,.png,.jpeg">
+
+                                @if ($service->icon)
+                                    <div class="mt-2">
+                                        <small>Current Icon:</small><br>
+                                        <img src="{{ asset('storage/' . $service->icon) }}" width="120"
+                                            alt="Uploaded icon">
+                                    </div>
+                                @endif
+                            </div>
                             <div class="mb-4">
                                 <h5 class="mb-3">Image</h5>
                                 <input type="file" class="form-control" name="image" accept=".jpg,.png,.jpeg">

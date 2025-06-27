@@ -51,9 +51,19 @@
                             </div>
 
                             <div class="mb-4">
-                                <h5 class="mb-3">Description</h5>
-                                <textarea class="form-control rich-editor" name="description" cols="4" rows="6"
-                                    placeholder="write a description here.."></textarea>
+                                <h5 class="mb-3">Intro</h5>
+                                <textarea class="form-control rich-editor" name="intro" cols="4" rows="6"
+                                    placeholder="write a intro here.."></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <h5 class="mb-3">Why Choose</h5>
+                                <textarea class="form-control rich-editor" name="why_choose" cols="4" rows="6"
+                                    placeholder="write a why choose here.."></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <h5 class="mb-3">Icon</h5>
+                                <input type="file" class="form-control" name="icon"
+                                    accept=".jpg, .png, image/jpeg, image/png">
                             </div>
                             <div class="mb-4">
                                 <h5 class="mb-3">Image</h5>

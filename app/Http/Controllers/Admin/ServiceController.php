@@ -38,7 +38,9 @@ class ServiceController extends Controller
             'url' => 'nullable|string|max:255',
             'short_description' => 'nullable|string|max:255',
             'description' => 'required|string',
+            'why_choose' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'icon' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'category_id' => 'nullable|exists:categories,id',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
@@ -46,13 +48,17 @@ class ServiceController extends Controller
         ]);
         // Upload image
         $path = $request->file('image')->store('services', 'public');
+        $iconPath = $request->file('icon')->store('services', 'public');
 
         // Create Service
         $service = Service::create([
             'title' => $request->title,
             'image' => $path,
+            'icon' => $iconPath,
             'slug' => $request->url,
+            'short_description' => $request->short_description,
             'description' => $request->description,
+            'why_choose' => $request->why_choose,
             'is_active' => true,
             'category_id' => $request->category_id,
         ]);
@@ -107,7 +113,9 @@ class ServiceController extends Controller
             'url' => 'nullable|string|max:255',
             'short_description' => 'nullable|string|max:255',
             'description' => 'required|string',
+            'why_choose' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'category_id' => 'nullable|exists:categories,id',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
@@ -118,11 +126,16 @@ class ServiceController extends Controller
             $path = $request->file('image')->store('services', 'public');
             $service->image = $path;
         }
+        if ($request->hasFile('icon')) {
+            $iconPath = $request->file('icon')->store('services', 'public');
+            $service->icon = $iconPath;
+        }
 
         $service->update([
             'title' => $request->title,
             'short_description' => $request->short_description,
             'description' => $request->description,
+            'why_choose' => $request->why_choose,
             'slug' => $request->url,
             'is_active' => true,
             'category_id' => $request->category_id,
