@@ -12,6 +12,8 @@
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('/assets/style/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('/assets/style/home.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/assets/style/contact.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/style/services.css') }}">
     @stack('head')
     <title>@yield('title', 'Home')</title>
 </head>
@@ -49,7 +51,8 @@
                                             <ul class="list-unstyled">
                                                 @foreach (categoriesWithServices() as $category)
                                                     <li>
-                                                        <a href="#" class="dropdown-item px-0 py-1 category-link"
+                                                        <a href="{{ route('service', ['category' => $category->slug]) }}"
+                                                            class="dropdown-item px-0 py-1 category-link"
                                                             data-category="{{ Str::slug($category->slug) }}">
                                                             {{ $category->name }}
                                                         </a>
@@ -139,8 +142,14 @@
                                             <ul class="list-unstyled">
                                                 <li><a href="{{ route('about') }}"
                                                         class="dropdown-item px-0 py-1">About us</a></li>
-                                                <li><a href="#" class="dropdown-item px-0 py-1">Privacy Policy</a></li>
-                                                <li><a href="#" class="dropdown-item px-0 py-1">Terms and Conditions</a></li>
+                                                <li><a href="{{ route('privacy') }}"
+                                                        class="dropdown-item px-0 py-1">Privacy Policy</a></li>
+                                                <li><a href="{{ route('licences') }}"
+                                                        class="dropdown-item px-0 py-1">Licences</a></li>
+                                                <li><a href="{{ route('slavery') }}"
+                                                        class="dropdown-item px-0 py-1">Modern Slavery</a></li>
+                                                <li><a href="{{ route('terms') }}"
+                                                        class="dropdown-item px-0 py-1">Terms and Conditions</a></li>
                                             </ul>
                                         </div>
 
@@ -193,9 +202,9 @@
                         <div class="links">
                             <h3>Solutions</h3>
                             <ul>
-                                @foreach (services() as $service)
+                                @foreach (categories() as $category)
                                     <li><a
-                                            href="{{ route('service.detail', ['category' => $service->category->slug, 'service' => $service->slug]) }}">{{ $service->title }}</a>
+                                            href="{{ route('service', ['category' => $category->slug]) }}">{{ $category->name }}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -204,22 +213,25 @@
                             <h3>Company</h3>
                             <ul>
                                 <li><a href="{{ route('about') }}">About us</a></li>
-                                <li><a href="#">Who We Are</a></li>
-                                <li><a href="#">FAQ</a></li>
+                                <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
+                                <li><a href="{{ route('licences') }}">Licences</a></li>
+                                <li><a href="{{ route('slavery') }}">Modern Slavery</a></li>
+                                <li><a href="{{ route('terms') }}">Terms and Conditions</a></li>
                             </ul>
                         </div>
                         <div class="footer-input">
-                            <form action="{{ route('subscribe')}}" method="POST" class="ajax-form">
+                            <form action="{{ route('subscribe') }}" method="POST" class="ajax-form">
                                 @csrf
                                 <input type="email" name="email" placeholder="Don't miss out updates" />
                                 <div class="input-container">
                                     <input type="checkbox" name="consent" id="privacy_policy" />
                                     <label for="privacy_policy">I agree to the Privacy Policy and give my permission to
-                                        process my personal data for the purposes specified in the Privacy Policy.</label>
-                                    </div>
-                                    <button type="submit" class="button primary-btn">Send <i
+                                        process my personal data for the purposes specified in the Privacy
+                                        Policy.</label>
+                                </div>
+                                <button type="submit" class="button primary-btn">Send <i
                                         class="fa-solid fa-arrow-right"></i></button>
-                                    </form>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -297,8 +309,8 @@
             </div>
             <div class="note d-flex gap-3">
                 <a href="#">{!! setting('copyright') !!}</a>
-                <a href="{{ route('terms') }}">Terms & Conditions</a>
-                <a href="{{ route('privacy') }}">Privacy Policy</a>
+                {{-- <a href="{{ route('terms') }}">Terms & Conditions</a>
+                <a href="{{ route('privacy') }}">Privacy Policy</a> --}}
             </div>
         </div>
     </section>
@@ -382,5 +394,6 @@
         $(".footer-bg-image").css("transform", `scale(${scale})`);
     });
 </script>
+@stack('script')
 
 </html>

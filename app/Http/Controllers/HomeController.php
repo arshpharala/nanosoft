@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Url;
 use App\Models\Page;
 use App\Models\Enquiry;
 use App\Models\Industry;
 use App\Models\Location;
+use App\Models\Service;
 use App\Models\Subscriber;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -28,7 +30,12 @@ class HomeController extends Controller
 
     function service()
     {
-        return view('service-detail');
+        $services = Service::get();
+        $categories = Category::get();
+
+        $data['services'] = $services;
+        $data['categories'] = $categories;
+        return view('services', $data);
     }
 
     public function serviceDetail($categorySlug, $serviceSlug)
@@ -48,26 +55,28 @@ class HomeController extends Controller
         return view('contact', $data);
     }
 
-    function subscribe(Request $request){
+    function subscribe(Request $request)
+    {
 
         $request->validate([
             'consent'    => 'required',
             'email'        => 'required|email|max:150'
         ]);
 
-        Subscriber::firstOrCreate([
-            'email' => $request->email
-        ],
-        [
-            'ip' => $request->ip()
-        ]);
+        Subscriber::firstOrCreate(
+            [
+                'email' => $request->email
+            ],
+            [
+                'ip' => $request->ip()
+            ]
+        );
 
         if ($request->ajax()) {
             return response()->json(['success' => true, 'message' => 'Subscribed successfully!']);
         }
 
         return back()->with('success', 'Subscribed successfully!');
-
     }
 
     public function enquiry(Request $request)
@@ -112,5 +121,15 @@ class HomeController extends Controller
     function terms()
     {
         return view('terms');
+    }
+
+    function licence()
+    {
+        return view('licence');
+    }
+
+    function slavery()
+    {
+        return view('slavery');
     }
 }

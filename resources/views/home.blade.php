@@ -1,6 +1,60 @@
 @extends('layouts.master')
+@push('head')
+<style>
+    .hero-banner {
+    background: url('/assets/img/banner-img.png') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    padding: 0;
+}
+
+.hero-banner::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.55); /* dark overlay */
+    z-index: 1;
+}
+
+.hero-banner .container {
+    position: relative;
+    z-index: 2;
+}
+
+.animated-title {
+    font-size: 3rem;
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+</style>
+@endpush
 @section('content')
-    <section class="banner">
+    {{-- <section class="banner">
         <div class="container">
             <div class="banner-container">
                 <div class="row">
@@ -9,8 +63,7 @@
                             <h1 class="title fs-1">Secure IT Solutions for a Smarter World</h1>
                             <p class="fs-3">Precision Security. Personalized Solutions</p>
                             <div class="buttons d-flex align-items-center">
-                                <a href="{{ route('contact') }}" class="button primary-btn">Get in Touch </a>
-                                {{-- <a href="#" class="button secondary-btn">Services</a> --}}
+                                <a href="{{ route('contact') }}" class="button primary-btn">Get in Touch </a>]
                             </div>
                         </div>
                     </div>
@@ -21,7 +74,24 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
+
+    <section class="hero-banner d-flex align-items-center text-white">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-10 col-xl-8">
+                <h1 class="animated-title mb-4">Secure IT Solutions for a Smarter World</h1>
+                <p class="fs-4 mb-4 fade-in">Precision Security. Personalized Solutions</p>
+                <div class="d-flex justify-content-center">
+                    <a href="{{ route('contact') }}" class="button primary-btn me-3">Get in Touch</a>
+                    <a href="{{ route('service')}}" class="button secondary-btn">Services</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
     <div class="divider">
         <span></span>
@@ -79,7 +149,7 @@
             <h2>Solutions</h2>
             <div class="row">
                 @foreach (services()->take(6) as $service)
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-4 d-flex align-items-stretch">
                         <div class="solution-box">
                             <a href="{{ route('service.detail', ['category' => $service->category->slug, 'service' => $service->slug]) }}"
                                 class="solution-content">
@@ -92,13 +162,13 @@
                                 <p>{!! $service->short_description !!}</p>
                             </a>
                             <a href="{{ route('service.detail', ['category' => $service->category->slug, 'service' => $service->slug]) }}"
-                                class="learn"><span>Learn More</span></a>
+                                class="learn mt-auto"><span>Learn More</span></a>
                         </div>
                     </div>
                 @endforeach
 
             </div>
-            <a href="" class="button primary-btn mx-auto mt-4" style="width: fit-content;">View All Solutions</a>
+            <a href="{{route('service')}}" class="button primary-btn mx-auto mt-4" style="width: fit-content;">View All Solutions</a>
         </div>
     </section>
 
@@ -110,7 +180,7 @@
                     <h2 class="fs-1 fw-bold mb-5">Solving IT challenges in every industry, every day.</h2>
                     <ul class="d-flex flex-wrap" style="row-gap: 20px;">
                         @foreach ($industries as $industry)
-                            <li class="d-flex align-items-center rounded-pill pe-4" style="background-color: #95be53;">
+                            <li class="d-flex align-items-center rounded-pill pe-4" style="background-color: #f5f5f5">
                                 @if ($industry->image)
                                     <img src="{{ asset('storage/' . $industry->image) }}" width="55px" height="55px"
                                         class="rounded-circle object-cover" alt="{{ $industry->name }}">
@@ -118,7 +188,7 @@
                                     <img src="assets/img/banner-img.png" width="55px" height="55px"
                                         class="rounded-circle object-cover" alt="{{ $industry->name }}">
                                 @endif
-                                <p class="ms-2 mb-0">{{ $industry->name }}</p>
+                                <p class="ms-2 mb-0 text-dark">{{ $industry->name }}</p>
                             </li>
                         @endforeach
 

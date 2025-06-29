@@ -4,7 +4,7 @@
             <div class="partner-container">
                 <div class="partner-heading">
                     <div class="container">
-                        <p class="how">Contact Us</p>
+                        <h3 class="how">Contact Us</h3>
                         <h2>Partner with Us for Comprehensive IT</h2>
                     </div>
                 </div>
@@ -81,6 +81,12 @@
                         <div class="input-container">
                             <label for="">Message</label>
                             <textarea name="message" placeholder="To better assist you, please describe how we can help..."></textarea>
+                        </div>
+                        <div class="input-container">
+                            <label for="consent-checkbox">
+                                <input type="checkbox" name="consent" id="consent-checkbox" required>
+                                I agree to the Privacy Policy and give my permission to process my personal data for the purposes specified in the Privacy Policy.
+                            </label>
                         </div>
 
                         <button type="submit" class="button primary-btn">Submit</button>

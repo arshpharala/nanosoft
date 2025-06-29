@@ -13,6 +13,8 @@ Route::post('/subscribe', [HomeController::class, 'subscribe'])->name('subscribe
 Route::get('/about-us', [HomeController::class, 'about'])->name('about');
 Route::get('/terms-and-conditions', [HomeController::class, 'terms'])->name('terms');
 Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('privacy');
+Route::get('/modern-slavery', [HomeController::class, 'slavery'])->name('slavery');
+Route::get('/licences', [HomeController::class, 'licence'])->name('licences');
 
 
 // Route::get('/{slug}', [HomeController::class, 'page'])->name('page');
