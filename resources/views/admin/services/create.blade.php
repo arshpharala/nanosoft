@@ -52,8 +52,8 @@
 
                             <div class="mb-4">
                                 <h5 class="mb-3">Intro</h5>
-                                <textarea class="form-control rich-editor" name="intro" cols="4" rows="6"
-                                    placeholder="write a intro here.."></textarea>
+                                <textarea class="form-control rich-editor" name="description" cols="4" rows="6"
+                                    placeholder="write a description here.."></textarea>
                             </div>
                             <div class="mb-4">
                                 <h5 class="mb-3">Why Choose</h5>
