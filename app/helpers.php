@@ -18,7 +18,7 @@ if (!function_exists('categoriesWithServices')) {
 if (!function_exists('services')) {
     function services()
     {
-        return \App\Models\Service::with(['category'])->latest()->get();
+        return \App\Models\Service::with(['category'])->oldest()->get();
     }
 }
 

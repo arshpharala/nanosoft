@@ -48,6 +48,7 @@ class ServiceController extends Controller
         ]);
         // Upload image
         $path = $request->file('image')->store('services', 'public');
+
         $iconPath = $request->file('icon')->store('services', 'public');
 
         // Create Service
