@@ -21,8 +21,10 @@
         <div class="container">
             <div class="row align-items-lg-center">
                 <div class="col-12 col-md-6 col-lg-7">
-                    <h2 class="mb-lg-4">Introduction</h2>
-                    {!! $service->description !!}
+                    <h1 class="title mb-lg-4">Introduction</h1>
+                    <p>
+                        {!! $service->description !!}
+                    </p>
                 </div>
                 <div class="col-12 col-md-6 col-lg-5">
                     @if ($service->image)
@@ -119,8 +121,7 @@
                     <div class="performance-header d-flex flex-column flex-md-row align-items-center position-relative">
                         <div class="performance-text mt-5 mt-md-0">
                             <h2 class="title">Why Choose Us</h2>
-                            <p>{!! $service->why_choose !!}
-                            </p>
+                            {!! $service->why_choose !!}
                         </div>
                         <img id="scroll-performance-dots" src="{{asset('assets/img/shape-dots-black.svg') }}" alt="shape">
                     </div>
@@ -132,7 +133,7 @@
 
                         <li>
                             <h3>{{ $benefit->title }}</h3>
-                            <p>{!! $benefit->short_description !!}</p>
+                            {!! $benefit->short_description !!}
                         </li>
                         @endforeach
                     </ul>
