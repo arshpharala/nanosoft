@@ -25,7 +25,7 @@
             <div class="container">
                 <a class="navbar-brand fw-bold" href="{{ route('home') }}">
                     @if (setting('site_logo'))
-                        <img src="{{ asset('storage/' . setting('site_logo')) }}" width="120" alt="logo" />
+                        <img src="{{ asset('storage/' . setting('site_logo')) }}" width="180" alt="logo" />
                     @else
                         <img src="{{ asset('/assets/img/logo.svg') }}" alt="logo" />
                     @endif
@@ -239,7 +239,7 @@
                     <div class="footer-right mt-5 mt-md-0">
                         <div class="footer-right-content">
                             @if (setting('site_logo'))
-                                <img src="{{ asset('storage/' . setting('site_logo')) }}" width="120"
+                                <img src="{{ asset('storage/' . setting('site_logo')) }}" width="180"
                                     alt="logo-white" />
                             @else
                                 <img src="{{ asset('/assets/img/logo-white.svg') }}" alt="logo-white" />
