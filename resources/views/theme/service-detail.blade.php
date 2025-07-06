@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('theme.layouts.master')
 @push('head')
     <link rel="stylesheet" href="{{ asset('/assets/style/services.css') }}">
 @endpush
@@ -21,21 +21,43 @@
         <div class="container">
             <div class="row align-items-lg-center">
                 <div class="col-12 col-md-6 col-lg-7">
-                    <h1 class="title mb-lg-4">Introduction</h1>
+                    <h3 class="mb-lg-4">
+                        {{ $service->section_heading ?? 'Benefits of ' . $service->title . ' provided by Nanosoft' }}</h3>
                     <p>
-                        {!! $service->description !!}
+                        {!! $service->section_content !!}
                     </p>
+                    @if ($service->section_bullet_points)
+                        <ul class="benefits-list mt-5 mt-md-4">
+
+                            @foreach (json_decode($service->section_bullet_points, true) as $point)
+                                <li
+                                    class="d-flex flex-column align-items-center justify-content-center justify-content-md-start align-items-md-start">
+                                    <h3
+                                        class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-start">
+                                        <i class="fa-solid fa-circle-check mb-3 mb-md-0 me-md-2"></i> {{ $point['title'] }}
+                                    </h3>
+                                    <p class="text-center text-md-start">{{ $point['description'] }}</p>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+
+
+                    </ul>
                 </div>
                 <div class="col-12 col-md-6 col-lg-5">
-                    @if ($service->image)
-                    <img src="{{ asset('storage/' . $service->image) }}" alt="{{$service->title}}" class="w-100 mb-5 mb-md-0 h-100">
+                    @if ($service->section_image)
+                        <img src="{{ asset('storage/' . $service->section_image) }}" alt="{{ $service->title }}"
+                            class="w-100 mb-5 mb-md-0 h-100">
                     @else
-                    <img src="{{asset('assets/img/benefits-img.png') }}" alt="benefits-img" class="w-100 mb-5 mb-md-0 h-100">
+                        <img src="{{ asset('assets/img/benefits-img.png') }}" alt="benefits-img"
+                            class="w-100 mb-5 mb-md-0 h-100">
                     @endif
                 </div>
             </div>
         </div>
     </section>
+
     {{-- <section class="benefits">
         <div class="container">
             <div class="row align-items-lg-center">
@@ -98,21 +120,22 @@
         </div>
     </section> --}}
 
-    {{-- <section class="managed">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-12 col-md-6 col-lg-7">
-                    <img src="{{asset('assets/img/managed-img.png') }}" alt="managed-img" class="w-100" style="border-radius: 4px;">
-                </div>
-                <div class="col-12 col-md-6 col-lg-5 px-xl-4">
-                    <h2 class="mb-4">Our managed IT services let you concentrate on what matters</h2>
-                    <p>Are you busy putting out IT fires instead of focusing on your core business? If your technology
-                        is draining resources rather than optimizing them, Netsurit can get you back on track. A
-                        professionally managed services provider can give you the decisive edge to:</p>
+    @if (!empty($service->section_2_heading) && !empty($service->section_2_content))
+        <section class="managed">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6 col-lg-7">
+                        <img src="{{ asset('storage/' . $service->section_2_image) }}" alt="{{ $service->title }} image" class="w-100"
+                            style="border-radius: 4px;">
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-5 px-xl-4">
+                        <h2 class="mb-4">{{ $service->section_2_heading }}</h2>
+                        <p>{!! $service->section_2_content !!}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section> --}}
+        </section>
+    @endif
 
     <section class="performance">
         <div class="container">
@@ -123,18 +146,18 @@
                             <h2 class="title">Why Choose Us</h2>
                             {!! $service->why_choose !!}
                         </div>
-                        <img id="scroll-performance-dots" src="{{asset('assets/img/shape-dots-black.svg') }}" alt="shape">
+                        <img id="scroll-performance-dots" src="{{ asset('assets/img/shape-dots-black.svg') }}"
+                            alt="shape">
                     </div>
                 </div>
 
                 <div class="col-12 col-md-6">
                     <ul>
                         @foreach ($service->benefits as $benefit)
-
-                        <li>
-                            <h3>{{ $benefit->title }}</h3>
-                            {!! $benefit->short_description !!}
-                        </li>
+                            <li>
+                                <h3>{{ $benefit->title }}</h3>
+                                {!! $benefit->short_description !!}
+                            </li>
                         @endforeach
                     </ul>
                 </div>
@@ -143,5 +166,5 @@
     </section>
 
 
-    @include('includes.contact', ['services' => services()])
+    @include('theme.components.contact', ['services' => services()])
 @endsection

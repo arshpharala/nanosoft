@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EnquiryController;
 use App\Http\Controllers\Admin\IndustryController;
@@ -44,7 +45,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::resource('enquiries', EnquiryController::class);
     Route::resource('pages', PageController::class);
     Route::resource('service.benefits', BenefitController::class);
-
+    Route::resource('news', NewsController::class);
 
 
     Route::post('/admin/tinymce/upload', [TinyMCEController::class, 'upload'])->withoutMiddleware([VerifyCsrfToken::class])->name('tinymce.upload');

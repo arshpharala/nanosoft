@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('theme.layouts.master')
 @push('head')
 @endpush
 @section('content')
@@ -20,7 +20,8 @@
             <div class="row align-items-center g-4">
                 <div class="col-md-5">
                     @if (setting('site_logo'))
-                        <img src="{{ asset('storage/' . setting('site_logo')) }}" alt="NanoSoft Team" class="img-fluid rounded shadow">
+                        <img src="{{ asset('storage/' . setting('site_logo')) }}" alt="NanoSoft Team"
+                            class="img-fluid rounded shadow">
                     @endif
                 </div>
                 <div class="col-md-7">
@@ -46,5 +47,5 @@
     </section>
 
 
-    @include('includes.contact', ['services' => services()])
+    @include('theme.components.contact', ['services' => services()])
 @endsection

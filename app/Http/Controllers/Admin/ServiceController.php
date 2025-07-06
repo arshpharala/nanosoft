@@ -35,30 +35,65 @@ class ServiceController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'url' => 'nullable|string|max:255',
+            'slug' => 'nullable|string|max:255',
             'short_description' => 'nullable|string|max:255',
-            'description' => 'required|string',
+
+            'section_heading' => 'required|string',
+            'section_content' => 'required|string',
+            'section_image' => 'required|image|mimes:jpeg,png,jpg,webp|max:3072',
+
             'why_choose' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:3072',
-            'icon' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'icon' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'banner' => 'required|image|mimes:jpeg,png,jpg,webp|max:3072',
             'category_id' => 'nullable|exists:categories,id',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
             'meta_keywords' => 'nullable|string',
         ]);
         // Upload image
-        $path = $request->file('image')->store('services', 'public');
 
-        $iconPath = $request->file('icon')->store('services', 'public');
+        if ($request->hasFile('banner')) {
+            $banner = $request->file('banner')->store('services', 'public');
+        }
+
+
+        if ($request->hasFile('icon')) {
+            $iconPath = $request->file('icon')->store('services', 'public');
+        }
+
+        if ($request->hasFile('section_image')) {
+            $section_image = $request->file('section_image')->store('services', 'public');
+        }
+
+        if ($request->hasFile('section_2_image')) {
+            $section_2_image = $request->file('section_2_image')->store('services', 'public');
+        }
+
+        $section_bullet_points = collect($request->section_bullet_points)
+            ->filter(fn($item) => !empty($item['title']) || !empty($item['description']))
+            ->values()
+            ->toArray();
+
+
+
 
         // Create Service
         $service = Service::create([
             'title' => $request->title,
-            'image' => $path,
-            'icon' => $iconPath,
-            'slug' => $request->url,
+            'icon' => $iconPath ?? null,
+            'banner' => $banner ?? null,
+            'slug' => $request->slug,
+
+            'section_heading' => $request->section_heading,
+            'section_content' => $request->section_content,
+            'section_image' => $section_image ?? null,
+            'section_bullet_points' => $section_bullet_points,
+
+            'section_2_heading' => $request->section_2_heading,
+            'section_2_content' => $request->section_2_content,
+            'section_2_image' => $section_2_image ?? null,
+
             'short_description' => $request->short_description,
-            'description' => $request->description,
             'why_choose' => $request->why_choose,
             'is_active' => true,
             'category_id' => $request->category_id,
@@ -111,33 +146,61 @@ class ServiceController extends Controller
 
         $request->validate([
             'title' => 'required|string|max:255',
-            'url' => 'nullable|string|max:255',
+            'slug' => 'nullable|string|max:255',
             'short_description' => 'nullable|string|max:255',
-            'description' => 'required|string',
+
+            'section_heading' => 'required|string',
+            'section_content' => 'required|string',
+            'section_image' => 'nullable|image|mimes:jpeg,png,jpg|max:3072',
+
             'why_choose' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:3072',
             'icon' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'banner' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:3072',
             'category_id' => 'nullable|exists:categories,id',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
             'meta_keywords' => 'nullable|string',
         ]);
 
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('services', 'public');
-            $service->image = $path;
+
+
+        if ($request->hasFile('banner')) {
+            $banner = $request->file('banner')->store('services', 'public');
+            $service->banner = $banner;
         }
+
         if ($request->hasFile('icon')) {
             $iconPath = $request->file('icon')->store('services', 'public');
             $service->icon = $iconPath;
         }
 
+        if ($request->hasFile('section_image')) {
+            $section_image = $request->file('section_image')->store('services', 'public');
+            $service->section_image = $section_image;
+        }
+
+        if ($request->hasFile('section_2_image')) {
+            $section_2_image = $request->file('section_2_image')->store('services', 'public');
+            $service->section_2_image = $section_2_image;
+        }
+
+        $section_bullet_points = collect($request->section_bullet_points)
+            ->filter(fn($item) => !empty($item['title']) || !empty($item['description']))
+            ->values()
+            ->toArray();
+
         $service->update([
+            'section_heading' => $request->section_heading,
+            'section_content' => $request->section_content,
+            'section_bullet_points' => $section_bullet_points,
+
+            'section_2_heading' => $request->section_2_heading,
+            'section_2_content' => $request->section_2_content,
+
             'title' => $request->title,
             'short_description' => $request->short_description,
-            'description' => $request->description,
             'why_choose' => $request->why_choose,
-            'slug' => $request->url,
+            'slug' => $request->slug,
             'is_active' => true,
             'category_id' => $request->category_id,
         ]);

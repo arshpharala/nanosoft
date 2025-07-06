@@ -8,6 +8,7 @@ use App\Models\Page;
 use App\Models\Enquiry;
 use App\Models\Industry;
 use App\Models\Location;
+use App\Models\News;
 use App\Models\Service;
 use App\Models\Subscriber;
 use App\Models\Testimonial;
@@ -25,7 +26,7 @@ class HomeController extends Controller
         $data['testimonials'] = $testimonials;
         $data['industries'] = $industries;
 
-        return view('home', $data);
+        return view('theme.home', $data);
     }
 
     function service()
@@ -35,24 +36,24 @@ class HomeController extends Controller
 
         $data['services'] = $services;
         $data['categories'] = $categories;
-        return view('services', $data);
+        return view('theme.services', $data);
     }
 
     public function serviceDetail($categorySlug, $serviceSlug)
     {
-        $service = \App\Models\Service::where('slug', $serviceSlug)
+        $service = Service::where('slug', $serviceSlug)
             ->whereHas('category', function ($query) use ($categorySlug) {
                 $query->where('slug', $categorySlug);
             })->firstOrFail();
 
-        return view('service-detail', compact('service'));
+        return view('theme.service-detail', compact('service'));
     }
 
     function contact()
     {
         $locations = Location::all();
         $data['locations'] = $locations;
-        return view('contact', $data);
+        return view('theme.contact', $data);
     }
 
     function subscribe(Request $request)
@@ -105,31 +106,54 @@ class HomeController extends Controller
     function page($slug)
     {
         $page = Page::where('slug', $slug)->where('is_active', true)->firstOrFail();
-        return view('pages.dynamic', compact('page'));
+        return view('theme.pages.dynamic', compact('page'));
     }
 
     function about()
     {
-        return view('about-us');
+        return view('theme.about-us');
     }
 
     function privacy()
     {
-        return view('privacy');
+        return view('theme.privacy');
     }
 
     function terms()
     {
-        return view('terms');
+        return view('theme.terms');
     }
 
     function licence()
     {
-        return view('licence');
+        return view('theme.licence');
     }
 
     function slavery()
     {
-        return view('slavery');
+        return view('theme.slavery');
+    }
+
+    function news() {
+
+        $newsCollection = News::latest()->get();
+        $news           = $newsCollection->first();
+
+        $data['news'] = $news;
+        $data['newsCollection'] = $newsCollection->whereNotIn('id', [$news->id]);
+
+        return view('theme.news', $data);
+    }
+
+    function newsDetail($slug)
+    {
+
+        $news = News::where('slug', $slug)->firstOrFail();
+        $relatedNews = News::Where('category_id', $news->category_id)->whereNotIn('id', [$news->id])->get();
+
+        $data['relatedNews'] = $relatedNews;
+        $data['news'] = $news;
+
+        return view('theme.news-detail', $data);
     }
 }

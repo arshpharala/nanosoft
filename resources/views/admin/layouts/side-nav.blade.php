@@ -92,6 +92,21 @@
             </li>
         </ul>
     </li>
+    <li>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="material-icons-outlined">feedback</i>
+            </div>
+            <div class="menu-title">News</div>
+        </a>
+        <ul>
+            <li><a href="{{ route('admin.news.create') }}"><i class="material-icons-outlined">arrow_right</i>Add
+                    News</a>
+            </li>
+            <li><a href="{{ route('admin.news.index') }}"><i
+                        class="material-icons-outlined">arrow_right</i>News</a>
+            </li>
+        </ul>
+    </li>
     {{-- <li>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="material-icons-outlined">shopping_bag</i>

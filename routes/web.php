@@ -15,7 +15,8 @@ Route::get('/terms-and-conditions', [HomeController::class, 'terms'])->name('ter
 Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('privacy');
 Route::get('/modern-slavery', [HomeController::class, 'slavery'])->name('slavery');
 Route::get('/licences', [HomeController::class, 'licence'])->name('licences');
-
+Route::get('news', [HomeController::class,'news'])->name('news');
+Route::get('news/{slug}', [HomeController::class,'newsDetail'])->name('news.detail');
 
 // Route::get('/{slug}', [HomeController::class, 'page'])->name('page');
 

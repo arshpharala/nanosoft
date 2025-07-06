@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('theme.layouts.master')
 @push('head')
 @endpush
 @section('content')
@@ -99,5 +99,5 @@
 
 
 
-    @include('includes.contact', ['services' => services()])
+    @include('theme.components.contact', ['services' => services()])
 @endsection

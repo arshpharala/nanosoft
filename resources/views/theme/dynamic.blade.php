@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('theme.layouts.master')
 @section('content')
 <div class="container py-4">
     <div class="dynamic-page-content">

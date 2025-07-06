@@ -31,6 +31,7 @@
     <link href="{{ asset('theme/sass/bordered-theme.css') }}" rel="stylesheet" />
     <link href="{{ asset('theme/sass/responsive.css') }}" rel="stylesheet" />
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
     <!-- SweetAlert2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" />
     <!-- SweetAlert2 JS -->
@@ -259,6 +260,8 @@
     <script src="{{ asset('theme/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
     <script src="{{ asset('theme/assets/plugins/tinymce/tinymce.min.js') }}"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<script src="{{ asset('theme/assets/plugins/select2/js/select2-custom.js') }}"></script>
 
     <script src="{{ asset('theme/assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/forms.js') }}"></script>

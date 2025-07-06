@@ -22,4 +22,9 @@ class Category extends Model
     {
         return $this->morphOne(\App\Models\Meta::class, 'metable');
     }
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
 }

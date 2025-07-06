@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('theme.layouts.master')
 @push('head')
     <link rel="stylesheet" href="{{ asset('/assets/style/contact.css') }}">
 @endpush
@@ -60,7 +60,7 @@
         </div>
     </section>
 
-    @include('includes.contact', ['services' => services()])
+    @include('theme.components.contact', ['services' => services()])
 
 
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2470.7446670325385!2d0.679085876633896!3d51.73770537186658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8e13bb9fdbb55%3A0xf3680aeeea93ae4f!2sThe%20Causeway%2C%20Heybridge%2C%20Maldon%20CM9%204LJ%2C%20UK!5e0!3m2!1sen!2sae!4v1750709583356!5m2!1sen!2sae" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

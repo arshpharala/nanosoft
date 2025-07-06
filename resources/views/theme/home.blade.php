@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('theme.layouts.master')
 @push('head')
 <style>
     .hero-banner {
@@ -353,7 +353,7 @@
         </div>
     </section>
 
-    @include('includes.contact', ['services' => services()])
+    @include('theme.components.contact', ['services' => services()])
 
     <section class="recognized">
         <div class="container">

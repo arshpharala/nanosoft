@@ -1,31 +1,10 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('/assets/style/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/assets/style/home.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/assets/style/contact.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/style/services.css') }}">
-    @stack('head')
-    <title>@yield('title', 'Home')</title>
-</head>
-
-<body>
-
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="{{ route('home') }}">
                     @if (setting('site_logo'))
-                        <img src="{{ asset('storage/' . setting('site_logo')) }}" width="180" alt="logo" />
+                        <img src="{{ asset('storage/' . setting('site_logo')) }}" width="48" height="48"
+                            alt="logo" />
                     @else
                         <img src="{{ asset('/assets/img/logo.svg') }}" alt="logo" />
                     @endif
@@ -144,10 +123,10 @@
                                                         class="dropdown-item px-0 py-1">About us</a></li>
                                                 <li><a href="{{ route('privacy') }}"
                                                         class="dropdown-item px-0 py-1">Privacy Policy</a></li>
-                                                <li><a href="{{ route('licences') }}"
+                                                {{-- <li><a href="{{ route('licences') }}"
                                                         class="dropdown-item px-0 py-1">Licences</a></li>
                                                 <li><a href="{{ route('slavery') }}"
-                                                        class="dropdown-item px-0 py-1">Modern Slavery</a></li>
+                                                        class="dropdown-item px-0 py-1">Modern Slavery</a></li> --}}
                                                 <li><a href="{{ route('terms') }}"
                                                         class="dropdown-item px-0 py-1">Terms and Conditions</a></li>
                                             </ul>
@@ -172,6 +151,29 @@
                             </div>
                         </li>
 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Resource
+                            </a>
+
+                            <div class="dropdown-menu mt-0 border-0 shadow">
+                                <div class="container">
+                                    <div class="row align-items-start">
+
+                                        <div class="col-md-4">
+                                            <ul class="list-unstyled">
+                                                <li><a href="{{ route('news') }}"
+                                                        class="dropdown-item px-0 py-1">News</a></li>
+                                            </ul>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                         <li class="nav-item">
                             <a href="{{ route('contact') }}" class="nav-link">Contact Us</a>
                         </li>
@@ -191,209 +193,3 @@
             </div>
         </nav>
     </header>
-
-    @yield('content')
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <div class="footer-left">
-                        <div class="links">
-                            <h3>Solutions</h3>
-                            <ul>
-                                @foreach (categories() as $category)
-                                    <li><a
-                                            href="{{ route('service', ['category' => $category->slug]) }}">{{ $category->name }}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="links">
-                            <h3>Company</h3>
-                            <ul>
-                                <li><a href="{{ route('about') }}">About us</a></li>
-                                <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
-                                <li><a href="{{ route('licences') }}">Licences</a></li>
-                                <li><a href="{{ route('slavery') }}">Modern Slavery</a></li>
-                                <li><a href="{{ route('terms') }}">Terms and Conditions</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-input">
-                            <form action="{{ route('subscribe') }}" method="POST" class="ajax-form">
-                                @csrf
-                                <input type="email" name="email" placeholder="Don't miss out updates" />
-                                <div class="input-container">
-                                    <input type="checkbox" name="consent" id="privacy_policy" />
-                                    <label for="privacy_policy">I agree to the Privacy Policy and give my permission to
-                                        process my personal data for the purposes specified in the Privacy
-                                        Policy.</label>
-                                </div>
-                                <button type="submit" class="button primary-btn">Send <i
-                                        class="fa-solid fa-arrow-right"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="footer-right mt-5 mt-md-0">
-                        <div class="footer-right-content">
-                            @if (setting('site_logo'))
-                                <img src="{{ asset('storage/' . setting('site_logo')) }}" width="180"
-                                    alt="logo-white" />
-                            @else
-                                <img src="{{ asset('/assets/img/logo-white.svg') }}" alt="logo-white" />
-                            @endif
-                            <a href="{{ route('contact') }}" class="button primary-btn">Schedule Consultation</a>
-                        </div>
-                        <div class="footer-bg-image position-absolute z-0"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <section class="footer-note">
-        <div class="container">
-            <div class="footer-bottom">
-                <div class="row">
-                    <div class="col-12 col-md-4 col-xl-3">
-                        <div class="rating-box">
-                            @if (setting('site_logo'))
-                                <img src="{{ asset('storage/' . setting('site_logo')) }}" width="120"
-                                    alt="logo-white" />
-                            @else
-                                <img src="{{ asset('/assets/img/logo-white.svg') }}" alt="logo-white" />
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-8 d-md-flex align-items-center px-md-0 col-xl-4">
-                        <div class="address">
-                            <p>{!! nl2br(e(setting('address'))) !!}</p>
-                        </div>
-                        <div class="address">
-                            <p>T: <a href="tel:{{ setting('contact_phone') }}">{{ setting('contact_phone') }}</a></p>
-                            <p>E: <a href="mailto:{{ setting('contact_email') }}">{{ setting('contact_email') }}</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-12 col-xl-5">
-                        <ul class="social-links d-flex flex-wrap">
-                            @if (setting('linkedin'))
-                                <li><a href="{{ setting('linkedin') }}"><i class="fab fa-linkedin"></i> Linkedin</a>
-                                </li>
-                            @endif
-                            @if (setting('instagram'))
-                                <li><a href="{{ setting('instagram') }}"><i class="fab fa-instagram"></i>
-                                        Instagram</a></li>
-                            @endif
-                            @if (setting('pinterest'))
-                                <li><a href="{{ setting('pinterest') }}"><i class="fab fa-pinterest"></i>
-                                        Pinterest</a></li>
-                            @endif
-                            @if (setting('twitter'))
-                                <li><a href="{{ setting('twitter') }}"><i class="fab fa-twitter"></i> Twitter</a>
-                                </li>
-                            @endif
-                            @if (setting('facebook'))
-                                <li><a href="{{ setting('facebook') }}"><i class="fab fa-facebook"></i> Facebook</a>
-                                </li>
-                            @endif
-                            @if (setting('youtube'))
-                                <li><a href="{{ setting('youtube') }}"><i class="fab fa-youtube"></i> Youtube</a>
-                                </li>
-                            @endif
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="note d-flex gap-3">
-                <a href="#">{!! setting('copyright') !!}</a>
-                {{-- <a href="{{ route('terms') }}">Terms & Conditions</a>
-                <a href="{{ route('privacy') }}">Privacy Policy</a> --}}
-            </div>
-        </div>
-    </section>
-
-</body>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<!-- SweetAlert2 JS -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{{ asset('assets/js/forms.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        $('.category-link').on('mouseenter', function() {
-            const category = $(this).data('category');
-
-            // Hide all service blocks
-            $('#services-box .services-group').addClass('d-none');
-
-            // Show the matching block
-            $('#services-box .services-group[data-category="' + category + '"]').removeClass('d-none');
-        });
-    });
-</script>
-<script>
-    $(window).on("scroll", function() {
-        const scrollTop = $(window).scrollTop();
-        const offset = scrollTop * 0.2;
-        $("#scroll-dots").css("transform", `translateY(calc(-50% + ${offset}px))`);
-    });
-
-    $('.best-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        responsiveClass: true,
-        nav: true,
-        navText: [
-            '<i class="fa-solid fa-arrow-left"></i>',
-            '<i class="fa-solid fa-arrow-right"></i>'
-        ],
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 3
-            }
-        }
-    });
-
-    $('.review-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        responsiveClass: true,
-        nav: true,
-        navText: [
-            '<i class="fa-solid fa-arrow-left"></i>',
-            '<i class="fa-solid fa-arrow-right"></i>'
-        ],
-        items: 1,
-    });
-
-    $(document).ready(function() {
-        $('.accordion-button').on('click', function() {
-            const icon = $(this).find('.toggle-icon');
-            const isCollapsed = $(this).hasClass('collapsed');
-            icon.text(isCollapsed ? '-' : '+');
-        });
-    });
-
-    $(window).on("scroll", function() {
-        const scrollTop = $(window).scrollTop();
-        const maxScroll = $(document).height() - $(window).height();
-        const scrollProgress = scrollTop / maxScroll;
-        const scale = 1 + scrollProgress * 0.3;
-
-        $(".footer-bg-image").css("transform", `scale(${scale})`);
-    });
-</script>
-@stack('script')
-
-</html>
