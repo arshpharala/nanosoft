@@ -1,7 +1,29 @@
 @extends('theme.layouts.master')
 @push('head')
+    @php
+        $bannerImg = $service->banner ? asset('storage/' . $service->banner) : asset('assets/img/service-banner.png');
+    @endphp
+
     <link rel="stylesheet" href="{{ asset('/assets/style/services.css') }}">
+
+    <style>
+        .services-banner {
+            @if (!empty($service->banner))
+            background-size: cover;
+            @else
+            background-size: contain;
+            @endif
+            background-color: #110D95;
+            background-image: url({{$bannerImg}});
+            background-position: bottom right;
+            background-repeat: no-repeat;
+            color: #fff;
+            padding-block: 40px;
+        }
+    </style>
 @endpush
+
+
 @section('content')
     <section class="services-banner">
         <div class="container">
@@ -10,7 +32,8 @@
                     <h6 class="sub-heading">Solutions</h6>
                     <h2 class="title">{{ $service->title }}</h2>
                     <p class="text">{!! $service->short_description !!}</p>
-                    <a href="{{ route('contact') }}" class="button secondary-btn" style="width: fit-content;">Schedule a free
+                    <a href="{{ route('contact') }}" class="button secondary-btn" style="width: fit-content;">Schedule a
+                        free
                         Consultation</a>
                 </div>
             </div>
@@ -125,8 +148,8 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-12 col-md-6 col-lg-7">
-                        <img src="{{ asset('storage/' . $service->section_2_image) }}" alt="{{ $service->title }} image" class="w-100"
-                            style="border-radius: 4px;">
+                        <img src="{{ asset('storage/' . $service->section_2_image) }}" alt="{{ $service->title }} image"
+                            class="w-100" style="border-radius: 4px;">
                     </div>
                     <div class="col-12 col-md-6 col-lg-5 px-xl-4">
                         <h2 class="mb-4">{{ $service->section_2_heading }}</h2>
