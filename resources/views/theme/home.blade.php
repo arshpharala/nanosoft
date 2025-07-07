@@ -355,7 +355,7 @@
 
     @include('theme.components.contact', ['services' => services()])
 
-    <section class="recognized">
+    {{-- <section class="recognized">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-12 col-md-6">
@@ -371,5 +371,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection
