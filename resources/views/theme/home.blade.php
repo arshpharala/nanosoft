@@ -83,8 +83,8 @@
                 <h1 class="animated-title mb-4">Secure IT Solutions for a Smarter World</h1>
                 <p class="fs-4 mb-4 fade-in">Precision Security. Personalized Solutions</p>
                 <div class="d-flex justify-content-center">
-                    <a href="{{ route('contact') }}" class="button primary-btn me-3">Get in Touch</a>
-                    <a href="{{ route('service')}}" class="button secondary-btn">Services</a>
+                    <a href="{{ route('contact') }}" class="button primary-btn me-3">Book ITAD Pickup</a>
+                    <a href="{{ route('service')}}" class="button secondary-btn">Free Cyber Risk Assesment</a>
 
                 </div>
             </div>
