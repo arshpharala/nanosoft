@@ -12,18 +12,23 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mb-4">
-                                <h5 class="mb-3">Category Name</h5>
+                                <label for="category-name" class="form-label">Category Name</label>
                                 <input type="text" class="form-control" id="category-name" name="name"
                                     placeholder="Category name" required>
                             </div>
                             <div class="mb-4">
-                                <h5 class="mb-3">Slug</h5>
+                                <label for="category-slug" class="form-label">Slug</label>
                                 <input type="text" class="form-control" id="category-slug" name="slug"
                                     placeholder="Category slug (auto if empty)">
                             </div>
                             <div class="mb-4">
-                                <h5 class="mb-3">Icon</h5>
-                                <input type="file" class="form-control" name="icon" accept=".jpg,.jpeg,.png,.svg">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" name="description" cols="4" rows="6"
+                                    placeholder="Write a description here.."></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label for="icon" class="form-label">Icon</label>
+                                <input type="file" class="form-control" name="icon" accept=".jpg,.jpeg,.png,.svg,.webp">
                             </div>
                         </div>
                     </div>

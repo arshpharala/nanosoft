@@ -20,9 +20,10 @@ class HomeController extends Controller
     {
 
         $testimonials = Testimonial::get();
-
+        $categories = Category::all();
         $industries = Industry::get();
 
+        $data['categories'] = $categories;
         $data['testimonials'] = $testimonials;
         $data['industries'] = $industries;
 

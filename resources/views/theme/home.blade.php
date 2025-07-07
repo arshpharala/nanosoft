@@ -148,20 +148,20 @@
             <p class="how">How we do</p>
             <h2>Solutions</h2>
             <div class="row">
-                @foreach (services()->take(6) as $service)
+                @foreach ($categories as $category)
                     <div class="col-12 col-md-4 d-flex align-items-stretch">
                         <div class="solution-box">
-                            <a href="{{ route('service.detail', ['category' => $service->category->slug, 'service' => $service->slug]) }}"
+                            <a href="{{ route('service', ['category' => $category->slug]) }}"
                                 class="solution-content">
-                                @if (!empty($service->icon))
-                                    <img src="{{ asset('/storage/' . $service->icon) }}" alt="{{ $service->title }}">
+                                @if (!empty($category->icon))
+                                    <img src="{{ asset('/storage/' . $category->icon) }}" alt="{{ $category->name }}">
                                 @else
-                                    <img src="{{ asset('/assets/img/managed-services.png') }}" alt="{{ $service->title }}">
+                                    <img src="{{ asset('/assets/img/managed-services.png') }}" alt="{{ $category->name }}">
                                 @endif
-                                <h3>{{ $service->title }}</h3>
-                                <p>{!! $service->short_description !!}</p>
+                                <h3>{{ $category->name }}</h3>
+                                <p>{!! $category->description !!}</p>
                             </a>
-                            <a href="{{ route('service.detail', ['category' => $service->category->slug, 'service' => $service->slug]) }}"
+                            <a href="{{ route('service', ['category' => $category->slug]) }}"
                                 class="learn mt-auto"><span>Learn More</span></a>
                         </div>
                     </div>

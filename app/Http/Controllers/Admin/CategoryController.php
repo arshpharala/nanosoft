@@ -27,6 +27,7 @@ class CategoryController extends Controller
             'name' => 'required|string|max:255|unique:categories,name',
             'slug' => 'nullable|string|max:255|unique:categories,slug',
             'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'description' => 'required|string',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
             'meta_keywords' => 'nullable|string',
@@ -42,6 +43,7 @@ class CategoryController extends Controller
         $category = Category::create([
             'name' => $request->name,
             'slug' => $slug,
+            'description' => $request->description,
             'icon' => $iconPath,
             'created_by' => Auth::id(),
         ]);
@@ -70,6 +72,7 @@ class CategoryController extends Controller
             'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
             'slug' => 'nullable|string|max:255|unique:categories,slug,' . $category->id,
             'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'description' => 'required|string',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
             'meta_keywords' => 'nullable|string',
@@ -86,6 +89,7 @@ class CategoryController extends Controller
         $category->update([
             'name' => $request->name,
             'slug' => $slug,
+            'description' => $request->description,
         ]);
 
         $category->meta()->updateOrCreate([], [
