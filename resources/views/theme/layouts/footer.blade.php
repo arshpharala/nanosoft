@@ -65,7 +65,7 @@
                     <div class="col-12 col-md-4 col-xl-3">
                         <div class="rating-box">
                             @if (setting('site_logo'))
-                                <img src="{{ asset('storage/' . setting('site_logo')) }}" width="100"
+                                <img src="{{ asset('storage/' . setting('site_logo')) }}" width="40"
                                     alt="logo-white" />
                             @else
                                 <img src="{{ asset('/assets/img/logo-white.svg') }}" alt="logo-white" />
