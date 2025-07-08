@@ -22,16 +22,56 @@ class PageController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'title' => 'required',
             'slug' => 'required|unique:pages,slug',
             'content' => 'nullable|string',
+            'banner' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:3072',
             'is_active' => 'nullable|boolean',
+            'tagline' => 'nullable|string',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
+            'meta_keywords' => 'nullable|string',
         ]);
 
-        $data['is_active'] = $request->has('is_active');
-        $data['content'] = $request->content ? $request->content : null;
-        Page::create($data);
+        $page = new Page();
+        $page->title  = $request->title;
+        $page->slug = $request->slug;
+        $page->tagline = $request->tagline;
+
+        if ($request->hasFile('banner')) {
+            $banner = $request->file('banner')->store('pages', 'public');
+            $page->banner = $banner;
+        }
+
+        $page->is_active = $request->has('is_active');
+
+        $page->section_heading = $request->section_heading;
+        $page->section_content = $request->section_content;
+
+        if ($request->hasFile('section_image')) {
+            $section_image = $request->file('section_image')->store('services', 'public');
+            $page->section_image = $section_image;
+        }
+
+        $page->section_2_heading = $request->section_2_heading;
+        $page->section_2_content = $request->section_2_content;
+
+        if ($request->hasFile('section_2_image')) {
+            $section_2_image = $request->file('section_2_image')->store('services', 'public');
+            $page->section_2_image = $section_2_image;
+        }
+
+        $page->save();
+
+
+        // Attach meta info
+        $page->meta()->create([
+            'meta_title' => $request->meta_title,
+            'meta_description' => $request->meta_description,
+            'meta_keywords' => $request->meta_keywords,
+        ]);
+
         return redirect()->route('admin.pages.index')->with('success', 'Page created successfully');
     }
 
@@ -42,15 +82,32 @@ class PageController extends Controller
 
     public function update(Request $request, Page $page)
     {
-        $data = $request->validate([
+        $request->validate([
             'title' => 'required',
-            'slug' => 'required|unique:pages,slug,'.$page->id,
-            'content' => 'nullable|string',
+            'slug' => 'required|unique:pages,slug,' . $page->id,
             'is_active' => 'nullable|boolean',
+            'tagline' => 'nullable|string',
+            'banner' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:3072',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
+            'meta_keywords' => 'nullable|string',
         ]);
-        $data['is_active'] = $request->has('is_active');
-        $data['content'] = $request->content ? $request->content : null;
-        $page->update($data);
+
+        if ($request->hasFile('banner')) {
+            $banner = $request->file('banner')->store('pages', 'public');
+            $page->banner = $banner;
+        }
+
+        $page->is_active = $request->has('is_active');
+        $page->tagline = $request->tagline;
+        $page->save();
+
+        $page->meta()->updateOrCreate([], [
+            'meta_title' => $request->meta_title,
+            'meta_description' => $request->meta_description,
+            'meta_keywords' => $request->meta_keywords,
+        ]);
+
         return redirect()->route('admin.pages.index')->with('success', 'Page updated successfully');
     }
 

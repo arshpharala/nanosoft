@@ -107,7 +107,7 @@
             </li>
         </ul>
     </li>
-    {{-- <li>
+    <li>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="material-icons-outlined">shopping_bag</i>
             </div>
@@ -121,7 +121,7 @@
                         class="material-icons-outlined">arrow_right</i>Pages</a>
             </li>
         </ul>
-    </li> --}}
+    </li>
 
     <li>
         <a href="{{ route('admin.enquiries.index') }}">

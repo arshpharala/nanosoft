@@ -1,82 +1,146 @@
 @extends('admin.layouts.app')
-@section('head')
-    <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet" />
-    <link href="https://unpkg.com/grapesjs-component-code-editor/dist/grapesjs-component-code-editor.min.css"
-        rel="stylesheet" />
-    <style>
-        #gjs {
-            min-height: 600px;
-            border: 1px solid #ccc;
-        }
-    </style>
-@endsection
 @section('content')
-    <div class="container py-4">
-        <h2>{{ isset($page) ? 'Edit' : 'Create' }} Page</h2>
-        <form method="POST" action="{{ isset($page) ? route('admin.pages.update', $page) : route('admin.pages.store') }}">
-            @csrf
-            @if (isset($page))
-                @method('PUT')
-            @endif
+    <div class="main-content">
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Create Page</div>
+        </div>
+        <form method="POST" action="{{ route('admin.pages.store') }}">
 
-            <div class="mb-3">
-                <label>Title</label>
-                <input type="text" name="title" value="{{ old('title', $page->title ?? '') }}" class="form-control"
-                    required>
+            @csrf
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label>Title</label>
+                                <input type="text" name="title" value="{{ old('title') }}" class="form-control"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label>Tagline</label>
+                                <input type="text" name="tagline" value="{{ old('tagline') }}" class="form-control"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label>Slug (URL)</label>
+                                <input type="text" name="slug" value="{{ old('slug') }}" class="form-control"
+                                    required>
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="checkbox" name="is_active" value="1"> Active
+                            </div>
+
+                            <div class="mb-4">
+                                <h5 class="mb-3">Banner Image</h5>
+                                <input type="file" class="form-control" name="banner"
+                                    accept=".jpg, .png, .webp, image/jpeg, image/png">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h5 class="mb-3">Section #1</h5>
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <div class="mb-4">
+                                        <h5 class="mb-3">Section Heading</h5>
+                                        <input type="text" class="form-control" name="section_heading"
+                                            placeholder="write heading here..">
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <h5 class="mb-3">Section Content</h5>
+                                        <textarea class="form-control rich-editor" name="section_content" cols="4" rows="6"
+                                            placeholder="write a content here.."></textarea>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <h5 class="mb-3">Section Image</h5>
+                                        <input type="file" class="form-control" name="section_image"
+                                            accept=".jpg, .png, image/jpeg, image/png">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h5 class="mb-3">Section #2</h5>
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <div class="mb-4">
+                                        <h5 class="mb-3">Section Heading</h5>
+                                        <input type="text" class="form-control" name="section_2_heading"
+                                            placeholder="write heading here..">
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <h5 class="mb-3">Section Content</h5>
+                                        <textarea class="form-control rich-editor" name="section_2_content" cols="4" rows="6"
+                                            placeholder="write a content here.."></textarea>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <h5 class="mb-3">Section Image</h5>
+                                        <input type="file" class="form-control" name="section_2_image"
+                                            accept=".jpg, .png, image/jpeg, image/png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center gap-3">
+                                <a href="{{ route('admin.categories.index') }}"
+                                    class="btn btn-outline-danger flex-fill">Discard</a>
+                                <button type="submit" class="btn btn-outline-primary flex-fill">Update</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Meta Section --}}
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <h5 class="mb-3">Meta</h5>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label for="meta-title" class="form-label">Meta Title</label>
+                                    <input type="text" class="form-control" name="meta_title" id="meta-title"
+                                        value="{{ old('meta_title') }}" placeholder="Meta Title">
+                                </div>
+                                <div class="col-12">
+                                    <label for="meta-description" class="form-label">Meta Description</label>
+                                    <textarea class="form-control" name="meta_description" cols="4" rows="6"
+                                        placeholder="Write a description here..">{{ old('meta_description') }}</textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label for="keywords" class="form-label">Meta Keywords</label>
+                                    <input type="text" class="form-control" name="meta_keywords" id="keywords"
+                                        value="{{ old('meta_keywords') }}" placeholder="Keywords">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- End Meta Section --}}
+                </div>
             </div>
-            <div class="mb-3">
-                <label>Slug (URL)</label>
-                <input type="text" name="slug" value="{{ old('slug', $page->slug ?? '') }}" class="form-control"
-                    required>
-            </div>
-            <div class="mb-3">
-                <label>Page Builder</label>
-                <div id="gjs">{!! isset($page) ? $page->content : '' !!}</div>
-                <input type="hidden" name="content" id="page-content">
-            </div>
-            <div class="mb-3">
-                <input type="checkbox" name="is_active" value="1"
-                    {{ isset($page) && $page->is_active ? 'checked' : '' }}> Active
-            </div>
-            <button type="submit" class="btn btn-primary">Save Page</button>
         </form>
     </div>
 @endsection
 @push('script')
-    <script src="https://unpkg.com/grapesjs"></script>
-    <script src="https://unpkg.com/grapesjs-component-code-editor"></script>
-    <script src="https://unpkg.com/grapesjs-parser-postcss"></script>
-    <script>
-        const editor = grapesjs.init({
-            height: "100%",
-            container: "#gjs",
-            showOffsets: true,
-            fromElement: true,
-            noticeOnUnload: false,
-            storageManager: false,
-            selectorManager: {
-                componentFirst: true
-            },
-            plugins: ["grapesjs-component-code-editor", "grapesjs-parser-postcss"],
-            pluginsOpts: {
-                "grapesjs-component-code-editor": {
-                    /* Test here your options  */
-                }
-            }
-        });
-
-        const pn = editor.Panels;
-        const panelViews = pn.addPanel({
-            id: "views"
-        });
-        panelViews.get("buttons").add([{
-            attributes: {
-                title: "Open Code"
-            },
-            className: "fa fa-file-code-o",
-            command: "open-code",
-            togglable: false, //do not close when button is clicked again
-            id: "open-code"
-        }]);
-    </script>
 @endpush
