@@ -1,5 +1,11 @@
 @extends('theme.layouts.master')
 @push('head')
+    @include('theme.components.banner', [
+        'banner' => isset($page->banner) ? asset('storage/' . $page->banner) : asset('assets/img/service-banner.png'),
+        'hasBanner' => !empty($page->banner)
+    ])
+@endpush
+@push('head')
     <style>
         .category-btn.active {
             box-shadow: 0 .8rem 1rem rgba(0, 0, 0, .15);

@@ -1,5 +1,11 @@
 @extends('theme.layouts.master')
 @push('head')
+    @include('theme.components.banner', [
+        'banner' => isset($page->banner) ? asset('storage/' . $page->banner) : asset('assets/img/service-banner.png'),
+        'hasBanner' => !empty($page->banner)
+    ])
+@endpush
+@push('head')
     <link rel="stylesheet" href="{{ asset('/assets/style/contact.css') }}">
 @endpush
 @section('content')
