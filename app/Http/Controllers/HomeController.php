@@ -27,6 +27,16 @@ class HomeController extends Controller
         $data['testimonials'] = $testimonials;
         $data['industries'] = $industries;
 
+
+        $slug = request()->segment(1);
+        $page = Page::with('meta', 'sections')
+            ->where('slug', $slug)
+            ->where('is_active', true)
+            ->first();
+
+        $data['page'] = $page;
+        $data['meta'] = $page->meta ?? null;
+
         return view('theme.home', $data);
     }
 
@@ -37,6 +47,18 @@ class HomeController extends Controller
 
         $data['services'] = $services;
         $data['categories'] = $categories;
+
+
+        $slug = request()->segment(1);
+        $page = Page::with('meta', 'sections')
+            ->where('slug', $slug)
+            ->where('is_active', true)
+            ->first();
+
+        $data['page'] = $page;
+        $data['meta'] = $page->meta ?? null;
+
+
         return view('theme.services', $data);
     }
 
@@ -47,13 +69,26 @@ class HomeController extends Controller
                 $query->where('slug', $categorySlug);
             })->firstOrFail();
 
-        return view('theme.service-detail', compact('service'));
+        $data['service'] = $service;
+        $data['meta'] = $service->meta ?? '';
+
+        return view('theme.service-detail', $data);
     }
 
     function contact()
     {
         $locations = Location::all();
         $data['locations'] = $locations;
+
+        $slug = request()->segment(1);
+        $page = Page::with('meta', 'sections')
+            ->where('slug', $slug)
+            ->where('is_active', true)
+            ->first();
+
+        $data['page'] = $page;
+        $data['meta'] = $page->meta ?? null;
+
         return view('theme.contact', $data);
     }
 
@@ -112,36 +147,92 @@ class HomeController extends Controller
 
     function about()
     {
-        return view('theme.about-us');
+        $slug = request()->segment(1);
+        $page = Page::with('meta', 'sections')
+            ->where('slug', $slug)
+            ->where('is_active', true)
+            ->first();
+
+        $data['page'] = $page;
+        $data['meta'] = $page->meta ?? null;
+
+        return view('theme.about-us', $data);
     }
 
     function privacy()
     {
-        return view('theme.privacy');
+        $slug = request()->segment(1);
+        $page = Page::with('meta', 'sections')
+            ->where('slug', $slug)
+            ->where('is_active', true)
+            ->first();
+
+        $data['page'] = $page;
+        $data['meta'] = $page->meta ?? null;
+
+        return view('theme.privacy', $data);
     }
 
     function terms()
     {
-        return view('theme.terms');
+        $slug = request()->segment(1);
+        $page = Page::with('meta', 'sections')
+            ->where('slug', $slug)
+            ->where('is_active', true)
+            ->first();
+
+        $data['page'] = $page;
+        $data['meta'] = $page->meta ?? null;
+
+        return view('theme.terms', $data);
     }
 
     function licence()
     {
-        return view('theme.licence');
+        $slug = request()->segment(1);
+        $page = Page::with('meta', 'sections')
+            ->where('slug', $slug)
+            ->where('is_active', true)
+            ->first();
+
+        $data['page'] = $page;
+        $data['meta'] = $page->meta ?? null;
+
+        return view('theme.licence', $data);
     }
 
     function slavery()
     {
-        return view('theme.slavery');
+        $slug = request()->segment(1);
+        $page = Page::with('meta', 'sections')
+            ->where('slug', $slug)
+            ->where('is_active', true)
+            ->first();
+
+        $data['page'] = $page;
+        $data['meta'] = $page->meta ?? null;
+
+        return view('theme.slavery', $data);
     }
 
-    function news() {
+    function news()
+    {
 
         $newsCollection = News::latest()->get();
         $news           = $newsCollection->first();
 
         $data['news'] = $news;
         $data['newsCollection'] = $newsCollection->whereNotIn('id', [$news->id]);
+
+
+        $slug = request()->segment(1);
+        $page = Page::with('meta', 'sections')
+            ->where('slug', $slug)
+            ->where('is_active', true)
+            ->first();
+
+        $data['page'] = $page;
+        $data['meta'] = $page->meta ?? null;
 
         return view('theme.news', $data);
     }
@@ -154,6 +245,7 @@ class HomeController extends Controller
 
         $data['relatedNews'] = $relatedNews;
         $data['news'] = $news;
+        $data['meta'] = $news->meta ?? '';
 
         return view('theme.news-detail', $data);
     }

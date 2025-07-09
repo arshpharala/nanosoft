@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {!! render_meta_tags($meta ?? null) !!}
     @if (setting('site_logo'))
         <link rel="icon" href="favicon.png" type="image/png">
     @endif

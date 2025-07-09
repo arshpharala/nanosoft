@@ -1,28 +1,11 @@
 @extends('theme.layouts.master')
+
 @push('head')
-    @php
-        $bannerImg = $service->banner ? asset('storage/' . $service->banner) : asset('assets/img/service-banner.png');
-    @endphp
-
-    <link rel="stylesheet" href="{{ asset('/assets/style/services.css') }}">
-
-    <style>
-        .services-banner {
-            @if (!empty($service->banner))
-            background-size: cover;
-            @else
-            background-size: contain;
-            @endif
-            background-color: #110D95;
-            background-image: url({{$bannerImg}});
-            background-position: bottom right;
-            background-repeat: no-repeat;
-            color: #fff;
-            padding-block: 40px;
-        }
-    </style>
+    @include('theme.components.banner', [
+        'banner' => $service->banner ? asset('storage/' . $service->banner) : asset('assets/img/service-banner.png'),
+        'hasBanner' => !empty($service->banner)
+    ])
 @endpush
-
 
 @section('content')
     <section class="services-banner">

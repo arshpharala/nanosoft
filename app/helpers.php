@@ -105,3 +105,22 @@ if (!function_exists('render_editorjs')) {
     }
 }
 
+if (!function_exists('render_meta_tags')) {
+    function render_meta_tags($meta = null)
+    {
+        $defaultTitle = config('app.name', 'Nanosoft');
+        $defaultDescription = 'Welcome to ' . $defaultTitle . ' ITAD Asset Deposition.';
+        $defaultKeywords = 'ITAD, Asset Deposition';
+
+        $title = $meta->meta_title ?? $defaultTitle;
+        $description = $meta->meta_description ?? $defaultDescription;
+        $keywords = $meta->meta_keywords ?? $defaultKeywords;
+
+        return <<<HTML
+            <title>{$title}</title>
+            <meta name="description" content="{$description}">
+            <meta name="keywords" content="{$keywords}">
+        HTML;
+    }
+}
+

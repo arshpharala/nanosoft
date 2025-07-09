@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Section;
 use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
@@ -14,10 +15,13 @@ class Page extends Model
     ];
 
 
-        public function meta()
+    public function sections()
+    {
+        return $this->morphMany(Section::class, 'sectionable');
+    }
+
+    public function meta()
     {
         return $this->morphOne(\App\Models\Meta::class, 'metable');
     }
-
-
 }
