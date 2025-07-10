@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {!! render_meta_tags($meta ?? null) !!}
-    @if (setting('site_logo'))
-        <link rel="icon" href="favicon.png" type="image/png">
+    @if (setting('site_favicon'))
+        <link rel="icon" href="{{ asset('storage/' . setting('site_favicon')) }}" type="image/png">
     @endif
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
