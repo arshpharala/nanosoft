@@ -142,7 +142,7 @@
                                                 @foreach (stores() as $st)
                                                     <li class="d-flex align-items-center gap-2">
                                                         <img src="{{ asset('storage/' . $st->logo) }}"
-                                                            style="width: 50px;" alt="{{ $st->name }}" />
+                                                            style="height: 50px;" alt="{{ $st->name }}" />
                                                         <span>{{ $st->name }}</span>
                                                     </li>
                                                 @endforeach
