@@ -19,7 +19,6 @@ class HomeController extends Controller
 {
     public function home()
     {
-
         $testimonials = Testimonial::get();
         $categories = Category::all();
         $industries = Industry::get();
@@ -31,10 +30,9 @@ class HomeController extends Controller
         $data['statistics'] = $statistics;
 
 
-        $slug = request()->segment(1);
         $page = Page::with('meta', 'sections')
-            ->where('slug', $slug)
-            ->where('is_active', true)
+            ->where('slug', 'home')
+            ->where('is_active', operator: true)
             ->first();
 
         $data['page'] = $page;
@@ -284,6 +282,4 @@ class HomeController extends Controller
 
         return view('theme.news-detail', $data);
     }
-
-
 }

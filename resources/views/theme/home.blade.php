@@ -1,57 +1,71 @@
 @extends('theme.layouts.master')
 @push('head')
-<style>
-    .hero-banner {
-    background: url('/assets/img/banner-img.png') no-repeat center center;
-    background-size: cover;
-    height: 100vh;
-    position: relative;
-    padding: 0;
-}
+    @php
+        if (!empty($page->banner)) {
+            $bannerImg = 'storage/' . $page->banner;
+        } else {
+            $bannerImg = 'assets/img/banner-img.png';
+        }
+    @endphp
+    <style>
+        .hero-banner {
+            /* background: url('/assets/img/banner-img.png') no-repeat center center; */
+            background: url({{ $bannerImg }});
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            position: relative;
+            padding: 0;
+        }
 
-.hero-banner::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0, 0, 0, 0.55); /* dark overlay */
-    z-index: 1;
-}
+        .hero-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.55);
+            /* dark overlay */
+            z-index: 1;
+        }
 
-.hero-banner .container {
-    position: relative;
-    z-index: 2;
-}
+        .hero-banner .container {
+            position: relative;
+            z-index: 2;
+        }
 
-.animated-title {
-    font-size: 3rem;
-    animation: fadeInUp 1s ease-out forwards;
-    opacity: 0;
-}
+        .animated-title {
+            font-size: 3rem;
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+        }
 
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 2s ease-out forwards;
-    animation-delay: 0.5s;
-}
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+            animation-delay: 0.5s;
+        }
 
-@keyframes fadeInUp {
-    0% {
-        transform: translateY(40px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(40px);
+                opacity: 0;
+            }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
-</style>
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
 @endpush
 @section('content')
     {{-- <section class="banner">
@@ -77,20 +91,20 @@
     </section> --}}
 
     <section class="hero-banner d-flex align-items-center text-white">
-    <div class="container">
-        <div class="row justify-content-center text-center">
-            <div class="col-lg-10 col-xl-8">
-                <h1 class="animated-title mb-4">Secure IT Solutions for a Smarter World</h1>
-                <p class="fs-4 mb-4 fade-in">Precision Security. Personalized Solutions</p>
-                <div class="d-flex justify-content-center">
-                    <a href="{{ route('contact') }}" class="button primary-btn me-3">Book ITAD Pickup</a>
-                    <a href="{{ route('service')}}" class="button secondary-btn">Free Cyber Risk Assesment</a>
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10 col-xl-8">
+                    <h1 class="animated-title mb-4">Secure IT Solutions for a Smarter World</h1>
+                    <p class="fs-4 mb-4 fade-in">Precision Security. Personalized Solutions</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="{{ route('contact') }}" class="button primary-btn me-3">Book ITAD Pickup</a>
+                        <a href="{{ route('service') }}" class="button secondary-btn">Free Cyber Risk Assesment</a>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
     <div class="divider">
@@ -116,11 +130,12 @@
             <div class="why-us-container">
                 <div class="row">
                     @foreach ($statistics as $statistic)
-                    <div class="col-12 col-md-3">
-                        <img src="{{ asset('storage/'. $statistic->icon) }}" alt="{{$statistic->name}}" width="50">
-                        <h3>{{ $statistic->name }}</h3>
-                        <p>{{ $statistic->description }}</p>
-                    </div>
+                        <div class="col-12 col-md-3">
+                            <img src="{{ asset('storage/' . $statistic->icon) }}" alt="{{ $statistic->name }}"
+                                width="50">
+                            <h3>{{ $statistic->name }}</h3>
+                            <p>{{ $statistic->description }}</p>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -135,12 +150,12 @@
                 @foreach ($categories as $category)
                     <div class="col-12 col-md-4 d-flex align-items-stretch">
                         <div class="solution-box">
-                            <a href="{{ route('service', ['category' => $category->slug]) }}"
-                                class="solution-content">
+                            <a href="{{ route('service', ['category' => $category->slug]) }}" class="solution-content">
                                 @if (!empty($category->icon))
                                     <img src="{{ asset('/storage/' . $category->icon) }}" alt="{{ $category->name }}">
                                 @else
-                                    <img src="{{ asset('/assets/img/managed-services.png') }}" alt="{{ $category->name }}">
+                                    <img src="{{ asset('/assets/img/managed-services.png') }}"
+                                        alt="{{ $category->name }}">
                                 @endif
                                 <h3>{{ $category->name }}</h3>
                                 <p>{!! $category->description !!}</p>
@@ -152,7 +167,8 @@
                 @endforeach
 
             </div>
-            <a href="{{route('service')}}" class="button primary-btn mx-auto mt-4" style="width: fit-content;">View All Solutions</a>
+            <a href="{{ route('service') }}" class="button primary-btn mx-auto mt-4" style="width: fit-content;">View All
+                Solutions</a>
         </div>
     </section>
 
@@ -221,13 +237,12 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne" aria-expanded="false"
-                                            aria-controls="collapseOne">
+                                            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                             <span class="toggle-icon me-2">+</span> View More
                                         </button>
                                     </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse"
-                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                        data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             <ul>
                                                 @foreach ($category->services as $service)
