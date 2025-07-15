@@ -94,7 +94,7 @@
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-lg-10 col-xl-8">
-                    <h1 class="animated-title mb-4">Secure IT Solutions for a Smarter World</h1>
+                    <h1 class="animated-title mb-4">{{ $page->tagline ?? 'Secure IT Solutions for a Smarter World' }}</h1>
                     <p class="fs-4 mb-4 fade-in">Precision Security. Personalized Solutions</p>
                     <div class="d-flex justify-content-center">
                         <a href="{{ route('contact') }}" class="button primary-btn me-3">Book ITAD Pickup</a>
