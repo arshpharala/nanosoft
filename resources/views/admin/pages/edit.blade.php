@@ -6,7 +6,7 @@
             <div class="breadcrumb-title pe-3">Edit Page</div>
         </div>
 
-        <form method="POST" action="{{ route('admin.pages.update', $page->id) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.pages.update', $page->id) }}" enctype="multipart/form-data" class="ajax-form">
             @csrf
             @method('PUT')
 

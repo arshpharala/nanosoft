@@ -25,7 +25,7 @@ class PageController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'slug' => 'required|string|unique:pages,slug',
-            'banner' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:3072',
+            'banner' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif|max:3072',
         ]);
 
         $page = Page::create([
@@ -80,7 +80,7 @@ class PageController extends Controller
             'slug' => 'required|string|unique:pages,slug,' . $page->id,
             'tagline' => 'nullable|string',
             'is_active' => 'nullable|boolean',
-            'banner' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:3072',
+            'banner' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif|max:4000',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
             'meta_keywords' => 'nullable|string',

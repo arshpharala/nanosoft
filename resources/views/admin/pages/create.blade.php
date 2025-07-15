@@ -6,7 +6,7 @@
         <div class="breadcrumb-title pe-3">Create Page</div>
     </div>
 
-    <form method="POST" action="{{ route('admin.pages.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('admin.pages.store') }}" enctype="multipart/form-data" class="ajax-form">
         @csrf
         <div class="row">
             <div class="col-12 col-lg-8">
