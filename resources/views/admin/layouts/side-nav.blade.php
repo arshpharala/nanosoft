@@ -111,14 +111,14 @@
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="material-icons-outlined">shopping_bag</i>
             </div>
-            <div class="menu-title">Pages</div>
+            <div class="menu-title">CMS</div>
         </a>
         <ul>
-            <li><a href="{{ route('admin.pages.create') }}"><i class="material-icons-outlined">arrow_right</i>Add
-                    Page</a>
-            </li>
             <li><a href="{{ route('admin.pages.index') }}"><i
                         class="material-icons-outlined">arrow_right</i>Pages</a>
+            </li>
+            <li><a href="{{ route('admin.statistics.index') }}"><i
+                        class="material-icons-outlined">arrow_right</i>Statistics</a>
             </li>
         </ul>
     </li>

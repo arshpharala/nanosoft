@@ -115,29 +115,13 @@
         <div class="container">
             <div class="why-us-container">
                 <div class="row">
+                    @foreach ($statistics as $statistic)
                     <div class="col-12 col-md-3">
-                        <img src="{{ asset('/assets/img/cost-effectiveness.svg') }}" alt="cost">
-                        <h3>Cost-effectiveness</h3>
-                        <p>We offer affordable IT solutions that help you reduce costs and improve your bottom line.</p>
+                        <img src="{{ asset('storage/'. $statistic->icon) }}" alt="{{$statistic->name}}">
+                        <h3>{{ $statistic->name }}</h3>
+                        <p>{{ $statistic->description }}</p>
                     </div>
-                    <div class="col-12 col-md-3">
-                        <img src="{{ asset('/assets/img/innovative.svg') }}" alt="innovative">
-                        <h3>Innovative Technology</h3>
-                        <p>We stay up-to-date with the latest technology trends and offer innovative solutions that help
-                            you stay ahead of the competition.</p>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <img src="{{ asset('/assets/img/industry.svg') }}" alt="industry">
-                        <h3>Industry Expertise</h3>
-                        <p>We specialize in serving specific industries, such as healthcare, finance, or manufacturing,
-                            and offer tailored solutions that meet your unique needs.</p>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <img src="{{ asset('/assets/img/scalability.svg') }}" alt="scalability">
-                        <h3>Scalability</h3>
-                        <p>Our solutions are scalable and can grow with your business, ensuring that you get the most
-                            value out of your investment.</p>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

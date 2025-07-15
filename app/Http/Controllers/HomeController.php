@@ -10,6 +10,7 @@ use App\Models\Industry;
 use App\Models\Location;
 use App\Models\News;
 use App\Models\Service;
+use App\Models\Statistic;
 use App\Models\Subscriber;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -22,10 +23,12 @@ class HomeController extends Controller
         $testimonials = Testimonial::get();
         $categories = Category::all();
         $industries = Industry::get();
+        $statistics = Statistic::get();
 
         $data['categories'] = $categories;
         $data['testimonials'] = $testimonials;
         $data['industries'] = $industries;
+        $data['statistics'] = $statistics;
 
 
         $slug = request()->segment(1);

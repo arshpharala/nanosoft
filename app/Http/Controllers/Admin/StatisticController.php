@@ -33,7 +33,7 @@ class StatisticController extends Controller
      */
     public function store(Request $request)
     {
-          $request->validate([
+        $request->validate([
             'name' => 'required|string|max:100|unique:statistics,name',
             'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
             'description' => 'required|string',
@@ -71,7 +71,8 @@ class StatisticController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $statistic = Statistic::findOrFail($id);
+        return view('admin.statistics.edit', compact('statistic'));
     }
 
     /**
@@ -79,7 +80,32 @@ class StatisticController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $statistic = Statistic::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:100|unique:statistics,name,' . $statistic->id,
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'description' => 'required|string'
+
+        ]);
+
+        if ($request->hasFile('icon')) {
+            $iconPath = $request->file('icon')->store('statistic-icons', 'public');
+            $statistic->icon = $iconPath;
+            $statistic->save();
+        }
+
+        $statistic->update([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Statistic Updated.',
+            'redirect' => route('admin.statistics.index')
+        ]);
+
     }
 
     /**
