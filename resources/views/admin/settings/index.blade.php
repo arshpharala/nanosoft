@@ -44,6 +44,14 @@
                             </div>
 
                             <div class="mb-4">
+                                <h5 class="mb-3">Header Logo</h5>
+                                <input type="file" class="form-control" name="site_header_logo" accept="image/*">
+                                @if(setting('site_header_logo'))
+                                    <img src="{{ asset('storage/' . setting('site_header_logo')) }}" class="mt-2" width="100">
+                                @endif
+                            </div>
+
+                            <div class="mb-4">
                                 <h5 class="mb-3">Logo</h5>
                                 <input type="file" class="form-control" name="site_logo" accept="image/*">
                                 @if(setting('site_logo'))

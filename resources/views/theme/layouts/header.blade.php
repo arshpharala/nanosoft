@@ -2,13 +2,16 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="{{ route('home') }}">
-                    @if (setting('site_logo'))
+                    @if (setting('site_header_logo'))
+                        <img src="{{ asset('storage/' . setting('site_header_logo')) }}" height="48"
+                            alt="logo" />
+                    @elseif (setting('site_logo'))
                         <img src="{{ asset('storage/' . setting('site_logo')) }}" width="48" height="48"
                             alt="logo" />
                     @else
                         <img src="{{ asset('/assets/img/logo.svg') }}" alt="logo" />
                     @endif
-                </a>
+                </a>git 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -152,8 +155,8 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Resource
                             </a>
 
