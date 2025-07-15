@@ -218,7 +218,7 @@ class HomeController extends Controller
     function news()
     {
 
-        $newsCollection = News::latest()->get();
+        $newsCollection = News::news()->latest()->get();
         $news           = $newsCollection->first();
 
         $data['news'] = $news;
@@ -249,4 +249,38 @@ class HomeController extends Controller
 
         return view('theme.news-detail', $data);
     }
+    function educationalGuide()
+    {
+
+        $newsCollection = News::guide()->latest()->get();
+
+        $data['newsCollection'] = $newsCollection;
+
+
+        $slug = request()->segment(1);
+        $page = Page::with('meta', 'sections')
+            ->where('slug', $slug)
+            ->where('is_active', true)
+            ->first();
+
+        $data['page'] = $page;
+        $data['meta'] = $page->meta ?? null;
+
+        return view('theme.educational-guide', $data);
+    }
+
+    function educationalGuideDetail($slug)
+    {
+
+        $news = News::where('slug', $slug)->firstOrFail();
+        $relatedNews = News::Where('category_id', $news->category_id)->whereNotIn('id', [$news->id])->get();
+
+        $data['relatedNews'] = $relatedNews;
+        $data['news'] = $news;
+        $data['meta'] = $news->meta ?? '';
+
+        return view('theme.news-detail', $data);
+    }
+
+
 }

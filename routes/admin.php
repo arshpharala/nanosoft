@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\StatisticController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\TinyMCEController;
 use App\Http\Controllers\BenefitController;
@@ -46,6 +47,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::resource('pages', PageController::class);
     Route::resource('service.benefits', BenefitController::class);
     Route::resource('news', NewsController::class);
+    Route::resource('statistics', StatisticController::class);
 
 
     Route::post('/admin/tinymce/upload', [TinyMCEController::class, 'upload'])->withoutMiddleware([VerifyCsrfToken::class])->name('tinymce.upload');

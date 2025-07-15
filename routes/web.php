@@ -17,6 +17,8 @@ Route::get('/modern-slavery', [HomeController::class, 'slavery'])->name('slavery
 Route::get('/licences', [HomeController::class, 'licence'])->name('licences');
 Route::get('news', [HomeController::class,'news'])->name('news');
 Route::get('news/{slug}', [HomeController::class,'newsDetail'])->name('news.detail');
+Route::get('educational-guides', [HomeController::class,'educationalGuide'])->name('educational-guide');
+Route::get('educational-guide/{slug}', [HomeController::class,'educationalGuideDetail'])->name('educational-guide.detail');
 
 // Route::get('/{slug}', [HomeController::class, 'page'])->name('page');
 

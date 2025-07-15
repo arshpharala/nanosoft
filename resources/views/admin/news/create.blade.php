@@ -35,6 +35,14 @@
                                 </select>
                             </div>
 
+
+
+                            <div class="mb-4">
+                                <label for="is_guide">
+                                    <input type="checkbox" name="is_guide" id="is_guide">
+                                    Is Educational Guide?
+                                </label>
+                            </div>
                             <div class="mb-4">
                                 <h5 class="mb-3">Title</h5>
                                 <input type="text" class="form-control" name="title"

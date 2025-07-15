@@ -64,6 +64,7 @@ class NewsController extends Controller
             'intro' => $request->intro,
             'content' => $request->content,
             'category_id' => $request->category_id,
+            'is_guide' => empty($request->is_guide) ? 0 : 1,
             'created_by' => auth()->user()->id,
         ]);
 
@@ -157,6 +158,7 @@ class NewsController extends Controller
             'content' => $request->content,
             'slug' => $request->slug,
             'category_id' => $request->category_id,
+            'is_guide' => empty($request->is_guide) ? 0 : 1,
         ]);
 
 

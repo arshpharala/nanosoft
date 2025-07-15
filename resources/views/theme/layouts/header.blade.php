@@ -152,8 +152,8 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Resource
                             </a>
 
@@ -165,6 +165,8 @@
                                             <ul class="list-unstyled">
                                                 <li><a href="{{ route('news') }}"
                                                         class="dropdown-item px-0 py-1">News</a></li>
+                                                <li><a href="{{ route('educational-guide') }}"
+                                                        class="dropdown-item px-0 py-1">Educational Guide</a></li>
                                             </ul>
                                         </div>
 

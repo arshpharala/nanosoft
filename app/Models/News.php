@@ -6,7 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
 {
-    protected $fillable = ['title', 'category_id', 'slug', 'intro', 'content', 'image', 'created_by'];
+    protected $fillable = ['title', 'category_id', 'slug', 'intro', 'content', 'is_guide', 'image', 'created_by'];
+
+    function scopeNews($query){
+        $query->where('is_guide', 0);
+    }
+
+    function scopeGuide($query){
+        $query->where('is_guide', 1);
+    }
 
     public function category()
     {
