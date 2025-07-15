@@ -117,7 +117,7 @@
                 <div class="row">
                     @foreach ($statistics as $statistic)
                     <div class="col-12 col-md-3">
-                        <img src="{{ asset('storage/'. $statistic->icon) }}" alt="{{$statistic->name}}">
+                        <img src="{{ asset('storage/'. $statistic->icon) }}" alt="{{$statistic->name}}" width="50">
                         <h3>{{ $statistic->name }}</h3>
                         <p>{{ $statistic->description }}</p>
                     </div>
