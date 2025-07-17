@@ -52,7 +52,7 @@
                                                         data-category="{{ Str::slug($category->slug) }}">
                                                         <div class="row g-2">
                                                             @forelse ($category->services as $service)
-                                                                <div class="col-6 mb-2">
+                                                                <div class="col-12 col-md-6 mb-2">
                                                                     <a href="{{ route('service.detail', ['category' => $category->slug, 'service' => $service->slug]) }}"
                                                                         class="border rounded text-decoration-none p-3 d-block text-dark h-100">
                                                                         {{-- <img src="{{ asset('uploads/icons/' . $service->icon) }}"

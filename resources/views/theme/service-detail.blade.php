@@ -132,7 +132,7 @@
                 <div class="row align-items-center">
                     <div class="col-12 col-md-6 col-lg-7">
                         <img src="{{ asset('storage/' . $service->section_2_image) }}" alt="{{ $service->title }} image"
-                            style="border-radius: 4px; max-height:700px">
+                            style="border-radius: 4px; max-height:700px; max-width:100%">
                     </div>
                     <div class="col-12 col-md-6 col-lg-5 px-xl-4">
                         <h2 class="mb-4">{{ $service->section_2_heading }}</h2>
