@@ -74,8 +74,6 @@ class ServiceController extends Controller
             ->values()
             ->toArray();
 
-        
-
 
         // Create Service
         $service = Service::create([
@@ -87,7 +85,7 @@ class ServiceController extends Controller
             'section_heading' => $request->section_heading,
             'section_content' => $request->section_content,
             'section_image' => $section_image ?? null,
-            'section_bullet_points' => $section_bullet_points,
+            'section_bullet_points' => json_encode($section_bullet_points),
 
             'section_2_heading' => $request->section_2_heading,
             'section_2_content' => $request->section_2_content,
@@ -192,7 +190,7 @@ class ServiceController extends Controller
         $service->update([
             'section_heading' => $request->section_heading,
             'section_content' => $request->section_content,
-            'section_bullet_points' => $section_bullet_points,
+            'section_bullet_points' => json_encode($section_bullet_points),
 
             'section_2_heading' => $request->section_2_heading,
             'section_2_content' => $request->section_2_content,
