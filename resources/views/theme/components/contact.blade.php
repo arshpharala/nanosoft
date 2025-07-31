@@ -17,16 +17,6 @@
                             , {{ setting('contact_phone_alternative') }}
                         @endif
                     </h6>
-                    <h6>Call us at: {{ setting('contact_phone') }}
-                    </h6>
-                    @if (setting('contact_phone_alternative'))
-                        <h6>
-                            Call us at:
-                            {{ setting('contact_phone_alternative') }}
-
-                        </h6>
-                    @endif
-
                     <p><strong>Your benefits:</strong></p>
                     <ul class="d-flex flex-wrap justify-content-between">
                         <li><i class="fa-solid fa-circle-check"></i> Client-oriented</li>
