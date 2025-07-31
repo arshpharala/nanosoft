@@ -37,6 +37,10 @@
                                 <h5 class="mb-3">Contact Phone</h5>
                                 <input type="text" class="form-control" name="contact_phone" value="{{ setting('contact_phone') }}" placeholder="Phone number">
                             </div>
+                            <div class="mb-4">
+                                <h5 class="mb-3">Contact Phone Alternative</h5>
+                                <input type="text" class="form-control" name="contact_phone_alternative" value="{{ setting('contact_phone_alternative') }}" placeholder="Phone number Alternative">
+                            </div>
 
                             <div class="mb-4">
                                 <h5 class="mb-3">Address</h5>

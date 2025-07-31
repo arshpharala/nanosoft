@@ -5,7 +5,7 @@
                 <div class="partner-heading">
                     <div class="container">
                         <h3 class="how">Contact Us</h3>
-                        <h2>Partner with Us for Comprehensive IT</h2>
+                        <h2>Partner with Nanosoft for Trusted IT & Security Solutions</h2>
                     </div>
                 </div>
                 <div class="partner-content">
@@ -14,6 +14,9 @@
                             best
                             fit your needs.</p>
                         <h6>Call us at: {{ setting('contact_phone') }}</h6>
+                        @if (setting('contact_phone_alternative'))
+                        <h6>Call us at: {{ setting('contact_phone_alternative') }}</h6>
+                        @endif
                         <p><strong>Your benefits:</strong></p>
                         <ul class="d-flex flex-wrap justify-content-between">
                             <li><i class="fa-solid fa-circle-check"></i> Client-oriented</li>
