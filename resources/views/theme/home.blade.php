@@ -132,7 +132,7 @@
                     @foreach ($statistics as $statistic)
                         <div class="col-12 col-md-3">
                             <img src="{{ asset('storage/' . $statistic->icon) }}" alt="{{ $statistic->name }}"
-                                width="50">
+                                width="65">
                             <h3>{{ $statistic->name }}</h3>
                             <p>{{ $statistic->description }}</p>
                         </div>
