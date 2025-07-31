@@ -3,8 +3,7 @@
             <div class="container">
                 <a class="navbar-brand fw-bold" href="{{ route('home') }}">
                     @if (setting('site_header_logo'))
-                        <img src="{{ asset('storage/' . setting('site_header_logo')) }}" height="48"
-                            alt="logo" />
+                        <img src="{{ asset('storage/' . setting('site_header_logo')) }}" height="48" alt="logo" />
                     @elseif (setting('site_logo'))
                         <img src="{{ asset('storage/' . setting('site_logo')) }}" width="48" height="48"
                             alt="logo" />
@@ -136,18 +135,20 @@
                                         </div>
 
                                         <!-- Column 3: Online Stores -->
-                                        <div class="col-md-4 p-3 rounded">
-                                            <h6 class="fw-bold mb-3 text-primary">Online Stores</h6>
-                                            <ul class="list-unstyled d-flex flex-column gap-2">
-                                                @foreach (stores() as $st)
-                                                    <li class="d-flex align-items-center gap-2">
-                                                        <img src="{{ asset('storage/' . $st->logo) }}"
-                                                            style="height: 30px;" alt="{{ $st->name }}" />
-                                                        <span>{{ $st->name }}</span>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
+                                        {{-- @if (stores()->isNotEmpty())
+                                            <div class="col-md-4 p-3 rounded">
+                                                <h6 class="fw-bold mb-3 text-primary">Online Stores</h6>
+                                                <ul class="list-unstyled d-flex flex-column gap-2">
+                                                    @foreach (stores() as $st)
+                                                        <li class="d-flex align-items-center gap-2">
+                                                            <img src="{{ asset('storage/' . $st->logo) }}"
+                                                                style="height: 30px;" alt="{{ $st->name }}" />
+                                                            <span>{{ $st->name }}</span>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif --}}
 
                                     </div>
                                 </div>
@@ -155,8 +156,8 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Resource
                             </a>
 

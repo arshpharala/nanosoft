@@ -18,8 +18,8 @@
                         <ul>
                             <li><a href="{{ route('about') }}">About us</a></li>
                             <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
-                            <li><a href="{{ route('licences') }}">Licences</a></li>
-                            <li><a href="{{ route('slavery') }}">Modern Slavery</a></li>
+                            {{-- <li><a href="{{ route('licences') }}">Licences</a></li> --}}
+                            {{-- <li><a href="{{ route('slavery') }}">Modern Slavery</a></li> --}}
                             <li><a href="{{ route('terms') }}">Terms and Conditions</a></li>
                         </ul>
                     </div>
