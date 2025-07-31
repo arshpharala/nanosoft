@@ -9,7 +9,7 @@
             </div>
             <div class="partner-content">
                 <div class="container">
-                    <p>We’re happy to answer any questions you may have and help you determine which of our services
+                    <p>We're happy to answer any questions you may have and help you determine which of our services
                         best
                         fit your needs.</p>
                     <h6>Call us at: {{ setting('contact_phone') }}

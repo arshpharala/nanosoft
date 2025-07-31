@@ -74,7 +74,7 @@
 
                                         <!-- Column 3: Industry Focus -->
                                         <div class="col-md-3 position-relative">
-                                            <div class="megamenu-icon">
+                                            {{-- <div class="megamenu-icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="67" height="67"
                                                     viewBox="0 0 67 67">
                                                     <g transform="matrix(1 0 0 -1 .33 66.67)" fill="none"
@@ -90,7 +90,7 @@
                                                             fill="#343844" fill-rule="nonzero"></path>
                                                     </g>
                                                 </svg>
-                                            </div>
+                                            </div> --}}
                                             <h6 class="fw-bold mb-3 d-flex justify-content-end">Industry Focus</h6>
                                             <ul class="list-unstyled d-flex justify-content-end flex-column">
                                                 @foreach (industries() as $industry)
