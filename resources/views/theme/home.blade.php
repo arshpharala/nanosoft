@@ -98,7 +98,7 @@
                     <p class="fs-4 mb-4 fade-in">Precision Security. Personalized Solutions</p>
                     <div class="d-flex justify-content-center">
                         <a href="{{ route('contact') }}" class="button primary-btn me-3">Book ITAD Pickup</a>
-                        <a href="{{ route('service') }}" class="button secondary-btn">Free Cyber Risk Assesment</a>
+                        {{-- <a href="{{ route('service') }}" class="button secondary-btn">Free Cyber Risk Assesment</a> --}}
 
                     </div>
                 </div>

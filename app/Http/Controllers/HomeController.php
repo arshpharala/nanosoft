@@ -32,7 +32,7 @@ class HomeController extends Controller
 
         $page = Page::with('meta', 'sections')
             ->where('slug', 'home')
-            ->where('is_active', operator: true)
+            ->where('is_active',  true)
             ->first();
 
         $data['page'] = $page;
