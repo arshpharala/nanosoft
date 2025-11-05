@@ -6,9 +6,10 @@
                     <div class="links">
                         <h3>Solutions</h3>
                         <ul>
-                            @foreach (categories() as $category)
+                            @foreach (services() as $service)
                                 <li><a
-                                        href="{{ route('service', ['category' => $category->slug]) }}">{{ $category->name }}</a>
+                                        href="{{ route('service.detail', ['category' => $service->category->slug, 'service' => $service->slug]) }}">{{ $service->title }}
+                                    </a>
                                 </li>
                             @endforeach
                         </ul>
