@@ -28,6 +28,7 @@ class HomeController extends Controller
         $data['testimonials'] = $testimonials;
         $data['industries'] = $industries;
         $data['statistics'] = $statistics;
+        $data['services'] = Service::with('category')->has('category')->get();
 
 
         $page = Page::with('meta', 'sections')

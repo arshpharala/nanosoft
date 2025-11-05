@@ -27,7 +27,7 @@
                                 <div class="container">
                                     <div class="row">
                                         <!-- Column 1: Categories (was Services) -->
-                                        <div class="col-md-3">
+                                        {{-- <div class="col-md-3">
                                             <h6 class="fw-bold mb-3">Categories</h6>
                                             <ul class="list-unstyled">
                                                 @foreach (categoriesWithServices() as $category)
@@ -40,10 +40,10 @@
                                                     </li>
                                                 @endforeach
                                             </ul>
-                                        </div>
+                                        </div> --}}
 
                                         <!-- Column 2: Business Challenges (Fixed for proper grid display) -->
-                                        <div class="col-md-6">
+                                        <div class="col-md-9">
                                             <h6 class="fw-bold mb-3">Services</h6>
                                             <div id="services-box">
                                                 @foreach (categoriesWithServices() as $category)

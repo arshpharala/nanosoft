@@ -147,7 +147,26 @@
             <p class="how">How we do</p>
             <h2>Solutions</h2>
             <div class="row">
-                @foreach ($categories as $category)
+                @foreach ($services as $service)
+                {{-- {{ dd($service) }} --}}
+                    <div class="col-12 col-md-4 d-flex align-items-stretch">
+                        <div class="solution-box">
+                            <a href="{{ route('service.detail', ['category' => $service->category->slug, 'service' => $service->slug]) }}" class="solution-content">
+                                @if (!empty($service->icon))
+                                    <img src="{{ asset('/storage/' . $service->icon) }}" alt="{{ $service->title }}">
+                                @else
+                                    <img src="{{ asset('/assets/img/managed-services.png') }}"
+                                        alt="{{ $service->title }}">
+                                @endif
+                                <h3>{{ $service->title }}</h3>
+                                <p>{!! $service->short_description !!}</p>
+                            </a>
+                            <a href="{{ route('service.detail', ['category' => $service->category->slug, 'service' => $service->slug]) }}"
+                                class="learn mt-auto"><span>Learn More</span></a>
+                        </div>
+                    </div>
+                @endforeach
+                {{-- @foreach ($categories as $category)
                     <div class="col-12 col-md-4 d-flex align-items-stretch">
                         <div class="solution-box">
                             <a href="{{ route('service', ['category' => $category->slug]) }}" class="solution-content">
@@ -164,7 +183,7 @@
                                 class="learn mt-auto"><span>Learn More</span></a>
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
 
             </div>
             <a href="{{ route('service') }}" class="button primary-btn mx-auto mt-4" style="width: fit-content;">View All
