@@ -246,7 +246,7 @@
                     <span></span>
                 </div>
             </div>
-            <div class="container">
+            {{-- <div class="container">
                 <div class="owl-carousel best-carousel">
                     @foreach (categoriesWithServices() as $category)
                         <div class="item">
@@ -281,7 +281,7 @@
                     @endforeach
 
                 </div>
-            </div>
+            </div> --}}
     </section>
 
     {{-- <section class="blog">
